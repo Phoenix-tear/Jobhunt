@@ -52,8 +52,14 @@ jobs:
           cd ..
 
       - name: Run Backend Pytest Suite
+        shell: bash
         run: |
-          pytest -m "not live and not live_gemini and not gpu and not ollama"
+          python -m pytest -m "not live and not live_gemini and not gpu and not ollama" -rfE --tb=short 2>&1 | tee pytest.log
+
+      - name: Annotate pytest failures
+        if: failure()
+        shell: bash
+        run: python scripts/ci_annotate_failures.py pytest.log
 
       - name: Run Clean-Folder Acceptance Test
         env:
