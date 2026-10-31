@@ -206,8 +206,27 @@ def test_doctor_report_hides_the_home_folder_and_login_name(test_config: Config,
     config = dataclasses.replace(test_config, project_root=project, data_dir=None)
     monkeypatch.setattr("jobhunt.doctor.get_python_executable", lambda root: project / ".venv" / "Scripts" / "python.exe")
     report = generate_doctor_report(config, out_path=tmp_path / "report.txt").read_text(encoding="utf-8")
-    assert "zyxwvulogin" not in report.lower()
+    leaking = [line for line in report.splitlines() if "zyxwvulogin" in line.lower()]
+    assert not leaking, leaking
     assert "<project>" in report
 
     forward = str(project).replace("\\", "/")
     assert scrub_paths(f"see {forward}/data and {project}\data", {str(project): "<project>"}) == "see <project>/data and <project>\data"
+
+
+def test_report_path_roots_include_resolved_symlink_targets(test_config: Config, tmp_path: Path) -> None:
+    import dataclasses
+    import os
+
+    from jobhunt.doctor import report_path_roots, scrub_paths
+
+    real = tmp_path / "private" / "zyxwvulogin" / "proj"
+    real.mkdir(parents=True)
+    link = tmp_path / "link"
+    try:
+        os.symlink(tmp_path / "private", link, target_is_directory=True)
+    except (OSError, NotImplementedError):
+        pytest.skip("symlinks are not available here")
+    config = dataclasses.replace(test_config, project_root=link / "zyxwvulogin" / "proj", data_dir=None)
+    roots = report_path_roots(config)
+    assert "zyxwvulogin" not in scrub_paths(f"in {real} and in {link / 'zyxwvulogin' / 'proj'}", roots)

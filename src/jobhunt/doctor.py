@@ -497,6 +497,7 @@ class SystemDoctor:
         )
 
 
+GENERIC_LOGIN_NAMES = frozenset({"admin", "administrator", "runner", "default", "public", "guest", "vagrant", "ubuntu", "users"})
 TECTONIC_WARM_TIMEOUT_SECONDS = 30
 TECTONIC_FIRST_RUN_TIMEOUT_SECONDS = 180
 
@@ -607,12 +608,21 @@ def scrub_paths(text: str, roots: dict[str, str]) -> str:
 
 
 def report_path_roots(config: Config) -> dict[str, str]:
-    return {
-        str(config.data_directory): "<data>",
-        str(config.project_root): "<project>",
-        sys.prefix: "<python-prefix>",
-        str(Path.home()): "~",
+    """Folder -> placeholder, for each folder as given and fully resolved (macOS /var -> /private/var, symlinks)."""
+    named = {
+        config.data_directory: "<data>",
+        config.project_root: "<project>",
+        Path(sys.prefix): "<python-prefix>",
+        Path.home(): "~",
     }
+    roots: dict[str, str] = {}
+    for folder, placeholder in named.items():
+        roots[str(folder)] = placeholder
+        try:
+            roots[str(folder.resolve())] = placeholder
+        except OSError:
+            pass
+    return roots
 
 
 def generate_doctor_report(config: Config, out_path: Path | None = None, online: bool = False) -> Path:
@@ -692,6 +702,9 @@ def generate_doctor_report(config: Config, out_path: Path | None = None, online:
     lines.append("END OF REPORT (Safe to share with issue reports)")
     lines.append("=" * 70)
 
+    login_name = Path.home().name
+    if len(login_name) >= 5 and login_name.lower() not in GENERIC_LOGIN_NAMES:
+        custom_pii.add(login_name)  # the OS login name is personal wherever it shows up, whatever the path form
     report_text = scrub_paths("\n".join(lines), report_path_roots(config))
     for term in sorted(custom_pii, key=len, reverse=True):
         report_text = re.sub(re.escape(term), "[REDACTED_PII]", report_text, flags=re.IGNORECASE)
