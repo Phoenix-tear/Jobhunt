@@ -192,3 +192,22 @@ def test_tectonic_warm_cache_uses_short_timeout(test_config: Config) -> None:
         res = doc.check_tectonic()
     assert seen["timeout"] == TECTONIC_WARM_TIMEOUT_SECONDS
     assert res.status == "warn"
+
+
+def test_doctor_report_hides_the_home_folder_and_login_name(test_config: Config, tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    import dataclasses
+
+    from jobhunt.doctor import generate_doctor_report, scrub_paths
+
+    fake_home = tmp_path / "Users" / "zyxwvulogin"
+    project = fake_home / "projects" / "jobhunt"
+    project.mkdir(parents=True)
+    monkeypatch.setattr(Path, "home", classmethod(lambda cls: fake_home))
+    config = dataclasses.replace(test_config, project_root=project, data_dir=None)
+    monkeypatch.setattr("jobhunt.doctor.get_python_executable", lambda root: project / ".venv" / "Scripts" / "python.exe")
+    report = generate_doctor_report(config, out_path=tmp_path / "report.txt").read_text(encoding="utf-8")
+    assert "zyxwvulogin" not in report.lower()
+    assert "<project>" in report
+
+    forward = str(project).replace("\\", "/")
+    assert scrub_paths(f"see {forward}/data and {project}\data", {str(project): "<project>"}) == "see <project>/data and <project>\data"

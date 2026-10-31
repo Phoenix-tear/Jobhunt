@@ -589,6 +589,32 @@ def scrub_text(text: str, custom_pii: set[str] | None = None) -> str:
     return scrubbed
 
 
+def scrub_paths(text: str, roots: dict[str, str]) -> str:
+    """Replace known folders (project, data dir, home, interpreter prefix) by placeholders, in both slash styles.
+
+    A folder under the user's home carries the OS login name, which must not appear in a shareable report.
+    """
+    scrubbed = text
+    variants: list[tuple[str, str]] = []
+    for folder, placeholder in roots.items():
+        if not folder or len(folder) < 4:
+            continue
+        for candidate in {folder, folder.replace("\\", "/"), folder.replace("/", "\\")}:
+            variants.append((candidate, placeholder))
+    for folder, placeholder in sorted(variants, key=lambda item: len(item[0]), reverse=True):
+        scrubbed = re.sub(re.escape(folder), lambda _m, ph=placeholder: ph, scrubbed, flags=re.IGNORECASE)
+    return scrubbed
+
+
+def report_path_roots(config: Config) -> dict[str, str]:
+    return {
+        str(config.data_directory): "<data>",
+        str(config.project_root): "<project>",
+        sys.prefix: "<python-prefix>",
+        str(Path.home()): "~",
+    }
+
+
 def generate_doctor_report(config: Config, out_path: Path | None = None, online: bool = False) -> Path:
     """Generate a shareable, scrubbed diagnostic report doctor_report.txt."""
     doc = SystemDoctor(config, online=online)
@@ -666,6 +692,10 @@ def generate_doctor_report(config: Config, out_path: Path | None = None, online:
     lines.append("END OF REPORT (Safe to share with issue reports)")
     lines.append("=" * 70)
 
+    report_text = scrub_paths("\n".join(lines), report_path_roots(config))
+    for term in sorted(custom_pii, key=len, reverse=True):
+        report_text = re.sub(re.escape(term), "[REDACTED_PII]", report_text, flags=re.IGNORECASE)
+
     target_path = out_path or (config.project_root / "doctor_report.txt")
-    target_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    target_path.write_text(report_text + "\n", encoding="utf-8")
     return target_path
