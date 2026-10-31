@@ -21,6 +21,7 @@ MAX_DESCRIPTION_CHARS = 60_000
 
 _BLOCK_TAGS = ["p", "div", "ul", "ol", "tr", "table", "section", "article", "header", "footer",
                "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "pre"]
+_TRAILING_UNFINISHED_TAG = re.compile(r"<[A-Za-z/!][^<>]*\Z")  # a truncated feed can end mid-tag
 _ENCODED_MARKUP = re.compile(r"&lt;\s*/?\s*[a-zA-Z]")
 _HAS_ENTITY_OR_TAG = re.compile(r"[<&]")
 _SPACES_AND_TABS = re.compile(r"[ \t\r\f\v ]+")
@@ -46,6 +47,8 @@ def html_to_text(raw: Any) -> str:
         else:
             break
 
+    # Newer html.parser releases (Python 3.13.x) keep a tag cut off at the end of the input as text; older ones dropped it.
+    text = _TRAILING_UNFINISHED_TAG.sub("", text)
     from_markup = bool(_HAS_ENTITY_OR_TAG.search(text))
     if from_markup:
         with warnings.catch_warnings():

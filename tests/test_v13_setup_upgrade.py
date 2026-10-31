@@ -127,5 +127,5 @@ class TestTectonicInstall:
              patch("jobhunt.platform.tectonic_install.verify_tectonic_runs", return_value=True):
             installed = install_tectonic(target_dir=target_dir, os_arch="windows-x86_64")
             assert installed.is_file()
-            assert installed.name == "tectonic.exe"
+            assert installed.name == ("tectonic.exe" if os.name == "nt" else "tectonic")
             assert installed.read_text(encoding="utf-8") == "fake-binary-content"

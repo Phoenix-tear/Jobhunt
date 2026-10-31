@@ -80,8 +80,9 @@ class TestPlatformPaths:
              patch("shutil.which", return_value=str(which_bin)):
             paths = get_tectonic_search_paths(tmp_path)
             assert len(paths) >= 4
-            assert paths[0] == tmp_path / "tools" / "tectonic" / "windows-x86_64" / "tectonic.exe"
-            assert paths[1] == tmp_path / "tools" / "tectonic" / "tectonic.exe"
+            exe_name = "tectonic.exe" if os.name == "nt" else "tectonic"  # the suffix follows the real OS
+            assert paths[0] == tmp_path / "tools" / "tectonic" / "windows-x86_64" / exe_name
+            assert paths[1] == tmp_path / "tools" / "tectonic" / exe_name
             assert paths[2] == custom_bin.resolve()
             assert paths[3] == which_bin.resolve()
 

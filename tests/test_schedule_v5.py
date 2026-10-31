@@ -155,18 +155,22 @@ def test_match_with_ollama_down_fails_soft_with_a_clear_reason(cfg: Config, conn
 
 
 def test_command_hints_are_venv_qualified_outside_the_venv(monkeypatch) -> None:  # noqa: ANN001
+    import os
+
     from jobhunt import cmdhint
+
+    venv_python = r".\.venv\Scripts\python.exe" if os.name == "nt" else "./.venv/bin/python"
 
     monkeypatch.setattr(cmdhint, "in_venv", lambda: False)
     commands = frozenset({"gmail-auth", "train-ranker", "profile-build"})
-    assert cmdhint.command("gmail-auth") == r".\.venv\Scripts\python.exe -m jobhunt gmail-auth"
+    assert cmdhint.command("gmail-auth") == f"{venv_python} -m jobhunt gmail-auth"
     assert cmdhint.qualify("run `python -m jobhunt profile-build` first", commands) == \
-        r"run `.\.venv\Scripts\python.exe -m jobhunt profile-build` first"
+        f"run `{venv_python} -m jobhunt profile-build` first"
     assert cmdhint.qualify("Run `jobhunt gmail-auth` again", commands) == \
-        r"Run `.\.venv\Scripts\python.exe -m jobhunt gmail-auth` again"
+        f"Run `{venv_python} -m jobhunt gmail-auth` again"
     assert cmdhint.qualify("no trained model (run train-ranker)", commands) == \
-        r"no trained model (run .\.venv\Scripts\python.exe -m jobhunt train-ranker)"
-    already = r"use .\.venv\Scripts\python.exe -m jobhunt gmail-auth"
+        f"no trained model (run {venv_python} -m jobhunt train-ranker)"
+    already = f"use {venv_python} -m jobhunt gmail-auth"
     assert cmdhint.qualify(already, commands) == already                        # never qualified twice
     monkeypatch.setattr(cmdhint, "in_venv", lambda: True)
     assert cmdhint.qualify("run `python -m jobhunt profile-build`", commands) == "run `python -m jobhunt profile-build`"

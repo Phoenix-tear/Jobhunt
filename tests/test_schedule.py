@@ -111,7 +111,12 @@ def test_wake_to_run_is_a_config_flag(cfg: Config, tmp_path: Path) -> None:
 def test_email_task_repeats_every_four_hours_and_discover_is_weekly(cfg: Config, tmp_path: Path) -> None:
     planned = {p.spec.key: p for p in windows.plan_tasks(cfg, tmp_path / "c.yaml", python="p")}
     assert "<Interval>PT4H</Interval>" in planned["ingest-email"].xml
-    assert "<ScheduleByWeek>" in planned["discover"].xml and "<Sunday />" in planned["discover"].xml
+    # 03:00 IST on Sunday is Saturday evening in UTC: the weekday follows the machine's time-zone shift.
+    from jobhunt.schedule.definitions import WEEKDAYS
+
+    _, shift = local_time(cfg.schedule.discover_time, cfg.schedule.timezone)
+    expected_day = WEEKDAYS[(WEEKDAYS.index(cfg.schedule.discover_day) + shift) % 7]
+    assert "<ScheduleByWeek>" in planned["discover"].xml and f"<{expected_day} />" in planned["discover"].xml
     assert planned["ingest"].xml.count("<CalendarTrigger>") == 2
 
 
@@ -147,11 +152,12 @@ def test_cli_install_prints_the_plan_and_needs_yes(cfg: Config, tmp_path: Path, 
     make_fake_venv(tmp_path)
     calls: list[object] = []
     monkeypatch.setattr(windows, "install", lambda *a, **k: calls.append(a) or [])
-    args = cli.build_parser().parse_args(["schedule-install"])
+    args = cli.build_parser().parse_args(["schedule-install", "--backend", "windows_task_scheduler"])
     assert cli._command_schedule_install(args, cfg) == 0
     out = capsys.readouterr().out
     assert "jobhunt-ingest" in out and "Nothing was created" in out and calls == []
-    args = cli.build_parser().parse_args(["--config", str(tmp_path / "c.yaml"), "schedule-install", "--yes"])
+    args = cli.build_parser().parse_args(
+        ["--config", str(tmp_path / "c.yaml"), "schedule-install", "--backend", "windows_task_scheduler", "--yes"])
     cli._command_schedule_install(args, cfg)
     assert len(calls) == 1
 

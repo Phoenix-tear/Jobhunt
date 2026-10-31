@@ -13,6 +13,15 @@ from jobhunt.config import load_config
 from jobhunt.schedule.morning_check import run_morning_check
 
 
+@pytest.fixture(autouse=True)
+def _no_real_scheduler(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Skip the installed-task lookup (schtasks / launchctl on the developer machine): every task counts as installed."""
+    def unavailable(*_args, **_kwargs):  # noqa: ANN002, ANN003, ANN202
+        raise RuntimeError("scheduler lookup disabled in tests")
+
+    monkeypatch.setattr("jobhunt.schedule.backends.get_scheduler_backend", unavailable)
+
+
 def _init_mock_db(conn: sqlite3.Connection) -> None:
     conn.execute("""
         CREATE TABLE IF NOT EXISTS scheduled_runs (

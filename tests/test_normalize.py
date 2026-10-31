@@ -95,3 +95,10 @@ class TestSalary:
     )
     def test_to_number(self, raw: object, expected: float | None) -> None:
         assert to_number(raw) == expected
+
+
+def test_html_to_text_drops_a_tag_cut_off_at_the_end() -> None:
+    from jobhunt.normalize import html_to_text
+
+    assert html_to_text('<p>Great role.</p>\n<p style="min-hei') == "Great role."
+    assert html_to_text("1 < 2 and 3 > 2") == "1 < 2 and 3 > 2"
