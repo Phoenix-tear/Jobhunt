@@ -190,3 +190,11 @@ def test_outside_the_venv_a_warning_names_the_missing_extras(monkeypatch, caplog
     assert "google.auth (gmail)" in caplog.text and ".venv" in caplog.text
     monkeypatch.setattr(cmdhint, "_missing_extras", lambda: [])
     assert cmdhint.warn_if_outside_venv(logging.getLogger("t")) is False
+
+
+def test_posix_venv_command_is_not_qualified_twice(monkeypatch) -> None:  # noqa: ANN001
+    from jobhunt import cmdhint
+
+    monkeypatch.setattr(cmdhint, "in_venv", lambda: False)
+    already = "use ./.venv/bin/python -m jobhunt gmail-auth"
+    assert cmdhint.qualify(already, frozenset({"gmail-auth"})) == already

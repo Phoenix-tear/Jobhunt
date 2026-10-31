@@ -59,7 +59,7 @@ def warn_if_outside_venv(logger: logging.Logger) -> bool:
     return True
 
 
-_PYTHON_M = re.compile(r"(?<![\w\\.])python(?:\.exe)? -m jobhunt\b")
+_PYTHON_M = re.compile(r"(?<![\w\\./])python(?:\.exe)? -m jobhunt\b")
 _BACKTICKED = re.compile(r"`jobhunt ([a-z][a-z-]*)")
 _RUN_BARE = re.compile(r"(\brun `)([a-z][a-z-]+)(`)")
 _RUN_PAREN = re.compile(r"(\(run )([a-z][a-z-]+)(\))")
