@@ -1,0 +1,129 @@
+{
+  "comments": "21/08/2026: Cursor pagination is now available and is the preferred way to page through the feed. Pass the nextCursor value from each response back as ?cursor=. It is faster than offset and will never return the same job twice. The offset parameter is deprecated and will be removed in a future release. 13/03/2026: The API has been updated to include the companySlug field in the response.",
+  "updatedAt": 1791809071,
+  "offset": 0,
+  "limit": 3,
+  "totalCount": 125605,
+  "nextCursor": "MjAyNi0xMC0xMlQxMjo0MDozNi45NjcxMDVafDIzOTQ2NjU",
+  "jobs": [
+    {
+      "title": "Statistical Reporting Analyst",
+      "excerpt": "About Martin Martin is a leading, tech-enabled insurance advisory firm celebrating over 30 years of excellence.",
+      "companyName": "Martin & Company",
+      "companySlug": "martin-company",
+      "companyLogo": "",
+      "employmentType": "Full Time",
+      "minSalary": 61000,
+      "maxSalary": 76000,
+      "salaryPeriod": "annual",
+      "seniority": [
+        "Mid-level"
+      ],
+      "currency": "USD",
+      "locationRestrictions": [
+        "United States"
+      ],
+      "timezoneRestrictions": [
+        -10,
+        -9,
+        -8,
+        -7,
+        -6,
+        -5,
+        14
+      ],
+      "categories": [
+        "Statistical-Analyst",
+        "Data-Analyst",
+        "Insurance-Analyst",
+        "Reporting-Analyst",
+        "Reporting-And-Metrics-Analyst",
+        "Performance-Reporting-Analyst"
+      ],
+      "parentCategories": [
+        "Data Science"
+      ],
+      "description": "<div>\n<p><b><strong>About Martin</strong></b></p>\n<p>Martin is a leading, tech-enabled insurance advisory firm celebrating over 30 years of excellence. We partner with national, regional, and local insurance carriers and Managing General Agents (MGAs) across the U.S. to solve their most critical challenges. Our expertise spans Product Development, Actuarial Services, Regulatory Compliance, State Filings, and Data Analytics. Our mission is simple: build lasting partnerships and deliver technology-driven outcomes that fuel business success. </p>\n</div><div>\n<p><b><strong>The Opportunity</strong></b></p>\n<p>As a Statistical Reporting Analyst, you will own end-to-end statistical reporting for Property &amp; Casualty insurance programs across multiple jurisdictions and reporting bureaus. You'll prepare, validate, and submit statistical and financial data to organizations such as ISO, NISS, ISS, and other independent bureaus on behalf of our clients. </p>\n<p>This role manages reporting from data intake and validation through submission, edit resolution, reconciliation, and final approval. It is ideal for someone with hands-on bureau reporting experience, strong analytical skills, and a solid understanding of insurance data and statistical reporting requirements, who can manage multiple reporting deadlines while maintaining a high level of accuracy. </p>\n<p><b><strong>Key Responsibilities</strong></b></p>\n<p><i><em>Statistical Reporting</em></i></p>\n<p>• End-to-End Ownership: Manage",
+      "pubDate": 1791809071,
+      "expiryDate": 1796993070,
+      "applicationLink": "https://himalayas.app/companies/martin-company/jobs/statistical-reporting-analyst",
+      "guid": "https://himalayas.app/companies/martin-company/jobs/statistical-reporting-analyst"
+    },
+    {
+      "title": "SAKD26LIN, Fysisk säkerhet, 25Yhp, v14-18, VT27, Linköping",
+      "excerpt": "Utbildning:Säkerhets- och beredskapssamordnareUtbildningskod:SAKD26LIN Utbildningsnummer:YH03097-2026-1 Ort:Linköping Studieform: DistansStudietakt: HelfartKurs: Fysisk säkerhetAntal YH-poäng: 25yhpMax antal deltagare: 45 stycken Lärarledd tid vid distansutbildning:Vecka:14-18 Närträff:NejAntal timmar lärarledd tidvia videolänksystem: 30stycken Totalt antal timmar: 30 styckenJämnt fördelat över perioden enligt överenskommelse med Utbildningsledare Utbildningsledare:Fredrik Wahlbom I länkarna nedan finns viktig information att ta del av inför ansökan om kursansvar hos oss på TUC Yrkeshögskola.",
+      "companyName": "TUC Sweden",
+      "companySlug": "tuc-sweden",
+      "companyLogo": "https://cdn-images.himalayas.app/zmrb6kkox2zr5d0iwb2uwvp24zqj",
+      "employmentType": "Contractor",
+      "minSalary": null,
+      "maxSalary": null,
+      "salaryPeriod": "annual",
+      "seniority": [
+        "Entry-level"
+      ],
+      "currency": null,
+      "locationRestrictions": [
+        "Sweden"
+      ],
+      "timezoneRestrictions": [
+        1
+      ],
+      "categories": [
+        "Kursansvarig",
+        "Kursledare",
+        "Physical-Security"
+      ],
+      "parentCategories": [],
+      "description": "<p><strong>Utbildning:</strong><strong>Säkerhets- och beredskapssamordnare</strong><strong>Utbildningskod:</strong><strong>SAKD26LIN</strong><strong><br>Utbildningsnummer:</strong><strong>YH03097-2026-1</strong><strong><br>Ort:</strong><strong>Linköping</strong><strong><br>Studieform: Distans</strong><strong>Studietakt: Helfart</strong><strong>Kurs: Fysisk säkerhet</strong><strong>Antal YH-poäng: 25yhp</strong><strong>Max antal deltagare: 45 stycken</strong></p><p><strong>Lärarledd tid vid distansutbildning:</strong>Vecka:14-18</p><h3>Närträff:Nej</h3><p>Antal timmar lärarledd tidvia videolänksystem: 30stycken </p><h3>Totalt antal timmar: 30 stycken</h3><p>Jämnt fördelat över perioden enligt överenskommelse med Utbildningsledare</p><p><strong>Utbildningsledare:</strong>Fredrik Wahlbom</p><hr><p>I länkarna nedan finns viktig information att ta del av inför ansökan om kursansvar hos oss på TUC Yrkeshögskola.</p><p><strong>Praktisk information - Ansöka om kursansvar</strong></p><p><strong>Praktisk information - Uppdraget att utbilda på TUC</strong></p><hr><p><strong>PRELIMINÄR KURSPLAN</strong></p><p><strong>Fysisk säkerhet 25 yhp.pdf</strong></p><p>Originally posted on <a href=\"https://himalayas.app\">Himalayas</a></p>",
+      "pubDate": 1791808977,
+      "expiryDate": 1796992976,
+      "applicationLink": "https://himalayas.app/companies/tuc-sweden/jobs/sakd26lin-fysisk-sakerhet-25yhp-v14-18-vt27-linkoping",
+      "guid": "https://himalayas.app/companies/tuc-sweden/jobs/sakd26lin-fysisk-sakerhet-25yhp-v14-18-vt27-linkoping"
+    },
+    {
+      "title": "Officer, Classification",
+      "excerpt": "JOB POSTING OFFICER, CLASSIFICATION About the Canadian Paralympic CommitteeThe Canadian Paralympic Committee is a private, non-profit organization that works in partnership with 28-member sport organizations to advance the Paralympic movement in Canada and support high-performance athletes with disabilities.",
+      "companyName": "International Paralympic Committee",
+      "companySlug": "international-paralympic-committee",
+      "companyLogo": "https://cdn-images.himalayas.app/wqjyn5bhwzajv1l3xod59s87mz2o",
+      "employmentType": "Full Time",
+      "minSalary": 60000,
+      "maxSalary": 68000,
+      "salaryPeriod": "annual",
+      "seniority": [
+        "Mid-level"
+      ],
+      "currency": "CAD",
+      "locationRestrictions": [
+        "Canada"
+      ],
+      "timezoneRestrictions": [
+        -8,
+        -7,
+        -6,
+        -5,
+        -4,
+        -3.5
+      ],
+      "categories": [
+        "Classification-Advisory-Officer",
+        "Sports-Administration",
+        "Sports-Coordinator",
+        "Paralympic-Administrator",
+        "Sport-Program-Officer",
+        "Position-Classification",
+        "Employee-Classification",
+        "Position-Classification-Specialist",
+        "Classification-Specialist",
+        "HR-Classification"
+      ],
+      "parentCategories": [],
+      "description": "<p>JOB POSTING</p><p>OFFICER, CLASSIFICATION</p><h3>About the Canadian Paralympic Committee</h3><p>The Canadian Paralympic Committee is a private, non-profit organization that works in partnership with 28-member sport organizations to advance the Paralympic movement in Canada and support high-performance athletes with disabilities.</p><p>Through the stories, achievements, and leadership of Paralympians, the Canadian Paralympic Committee aim to inspire Canadians to embrace accessibility, challenge perceptions, and create greater opportunities for participation in sport and in society.</p><h3>Job Summary</h3><p>The Classification Officer plays a vital role in strengthening the Paralympic System in Canada. Their main objective is to provide classification expertise, guidance, and education to National Sport Organizations (NSO), athletes, and other partners in the Canadian sport system. They will also link closely with teams within the CPC to provide support on any classification-related topics. </p><p>The ideal candidate will have experience as a classifier and a clear understanding of classification and the associated codes, policies, and processes. Experience as a Para athlete or Paralympian is considered an asset for this position.</p><h3>Type:                Full-Time</h3><p>Salary:             $60,000-$68,000 annually based on experience plus benefits</p><p>Reports To:      Senior Manager, Paralympic System and Services</p><p>Location:         Remote within Canada, with tra",
+      "pubDate": 1791808836,
+      "expiryDate": 1796992836,
+      "applicationLink": "https://himalayas.app/companies/international-paralympic-committee/jobs/officer-classification",
+      "guid": "https://himalayas.app/companies/international-paralympic-committee/jobs/officer-classification"
+    }
+  ]
+}

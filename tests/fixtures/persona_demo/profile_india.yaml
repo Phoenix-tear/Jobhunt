@@ -1,0 +1,129 @@
+# Synthetic second persona (India, class of 2027) used by tests/test_persona_independence.py. Not a real person.
+person:
+  display_name: Priya Nair
+  degree: B.Tech
+  field: Computer Science and Engineering
+  institution: Example Technical College
+  graduation_year: 2027
+  career_stage: student
+level_policy:
+  max_required_years: 2
+  years_penalty_per_year: 6.0
+  years_penalty_cap: 12.0
+  junior_boost: 6.0
+  internships_wanted: true
+  graduate_programmes_wanted: true
+  senior_words:
+  - senior
+  - lead
+  - principal
+  - staff
+  - manager
+  - director
+  - architect
+  excluded_roles:
+  - sales
+  - marketing
+  - recruiter
+  - frontend
+  - mobile developer
+  - ios developer
+  - android developer
+  exclude_levels:
+  - senior
+  - lead
+  maybe_levels:
+  - mid
+  exempt_levels:
+  - intern
+  - new_grad
+role_families:
+- id: systems_distributed
+  label: Distributed Systems & Infrastructure
+  keywords:
+  - distributed systems
+  - golang
+  - rust
+  - kubernetes
+  - docker
+  - grpc
+  - raft
+  - consensus
+  - linux
+  - networking
+  title_patterns:
+  - systems engineer
+  - infrastructure engineer
+  - distributed systems
+  - backend systems
+  - platform engineer
+  recipe: systems_infra
+  weight: 1.2
+  score_adjustment: 0.1
+- id: data_ml_systems
+  label: ML Systems & Data Platforms
+  keywords:
+  - data platform
+  - spark
+  - kafka
+  - ray
+  - flink
+  - stream processing
+  - data pipeline
+  title_patterns:
+  - data platform
+  - ml platform
+  - data systems
+  - data engineer
+  recipe: data_systems
+  weight: 1.0
+  score_adjustment: 0.0
+bases:
+- id: systems
+  label: Systems & Infrastructure Resume
+  tex_path: tests/fixtures/persona_demo/resume_systems.tex
+  optional: false
+- id: data_infra
+  label: Data Platform Resume
+  tex_path: tests/fixtures/persona_demo/resume_data.tex
+  optional: false
+location_policy:
+  home_country: India
+  home_cities:
+  - Bengaluru
+  - Bangalore
+  - Hyderabad
+  - Pune
+  - Chennai
+  - Mumbai
+  - Delhi
+  - Noida
+  - Gurugram
+  accepted_regions:
+  - india
+  - remote_open_to_india
+  remote_scope_rules:
+  - worldwide
+  - anywhere
+  - apac
+  - asia
+  - india
+  workplace_types:
+  - remote
+  - hybrid
+  - onsite
+scoring:
+  weight_fit: 0.55
+  weight_similarity: 0.25
+  weight_location: 0.2
+  caps:
+    years_penalty_max: 10.0
+paths:
+  facts: tests/fixtures/persona_demo/facts.yaml
+  summaries: tests/fixtures/persona_demo/variants.yaml
+  application_answers: tests/fixtures/persona_demo/application_answers.yaml
+  company_rules: data/company_rules.json
+  learned_rules: tests/fixtures/persona_demo/learned_rules.yaml
+  writing_samples: tests/fixtures/persona_demo/writing_samples.md
+candidate_blurb: Example Technical College computer science student (Class of 2027)
+  building backend services in Python.

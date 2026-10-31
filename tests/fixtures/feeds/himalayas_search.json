@@ -1,0 +1,182 @@
+{
+  "comments": "21/08/2026: Cursor pagination is now available and is the preferred way to page through the feed. Pass the nextCursor value from each response back as ?cursor=. It is faster than offset and will never return the same job twice. The offset parameter is deprecated and will be removed in a future release. 13/03/2026: The API has been updated to include the companySlug field in the response.",
+  "updatedAt": 1791711022,
+  "offset": 0,
+  "limit": 20,
+  "totalCount": 5000,
+  "jobs": [
+    {
+      "title": "Software Engineer",
+      "excerpt": "About UsElitevoraSys is a modern engineering consultancy focused on building high-performance operational platforms, automation pipelines, and data-driven workflows for clients who need real results - not just software.",
+      "companyName": "ElitevoraSys LLC",
+      "companySlug": "elitevorasys-llc",
+      "companyLogo": "https://cdn-images.himalayas.app/3pc0s39uob814yxkuwy550qy0jk9",
+      "employmentType": "Full Time",
+      "minSalary": 160000,
+      "maxSalary": 240000,
+      "salaryPeriod": "annual",
+      "seniority": [
+        "Senior"
+      ],
+      "currency": "USD",
+      "locationRestrictions": [
+        "United States"
+      ],
+      "timezoneRestrictions": [
+        -11,
+        -10,
+        -9.5,
+        -9,
+        -8,
+        -7,
+        -6,
+        -5,
+        -4,
+        -3.5,
+        -3,
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        3.5,
+        4,
+        4.5,
+        5,
+        5.5,
+        5.75,
+        6,
+        6.5,
+        7,
+        8,
+        8.75,
+        9,
+        9.5,
+        10,
+        10.5,
+        11,
+        12,
+        12.75,
+        13,
+        14
+      ],
+      "categories": [
+        "Software-Engineer",
+        "Software-Engineer-Developer",
+        "Software-Developer",
+        "IT-Software-Engineer",
+        "Software-Engineer-Jobs",
+        "Engineering-Software-Developer",
+        "Software-Systems-Engineer",
+        "Software-Engineering-Jobs",
+        "Software-Design-Engineer"
+      ],
+      "parentCategories": [
+        "Developer"
+      ],
+      "description": "<h3><strong>About Us</strong></h3><p>ElitevoraSys is a modern engineering consultancy focused on building high-performance operational platforms, automation pipelines, and data-driven workflows for clients who need real results - not just software.</p><p>We partner with organizations to design and deliver systems that streamline dispatch, asset management, field operations, and enterprise integrations.</p><h3><strong>Job Description</strong></h3><p>This is a remote position.</p><p><strong>Team:</strong> Engineering – Platform Consulting</p><h3><strong>About ElitevoraSys</strong></h3><p>ElitevoraSys is a modern engineering consultancy focused on building high-performance operational platforms, automation pipelines, and data-driven workflows for clients who need real results - not just software. We partner with organizations to design and deliver systems that streamline dispatch, asset management, field operations, and enterprise integrations. Our work blends clean architecture, practical engineering, and a startup mindset.</p><p>We're hiring a <strong>Senior Software Engineer</strong> to help expand WorkPro, our flagship operations platform deployed across multiple client environments. You'll work in a small, senior team, own services end-to-end across the stack, and help shape the technical direction of a system used daily by real operational teams.</p><p>This role is perfect for an experienced full-stack engineer who enjoys solving complex workflow problems, building reliabl",
+      "pubDate": 1789962228,
+      "expiryDate": 1792249223,
+      "applicationLink": "https://himalayas.app/companies/elitevorasys-llc/jobs/software-engineer",
+      "guid": "https://himalayas.app/companies/elitevorasys-llc/jobs/software-engineer"
+    },
+    {
+      "title": "Principal Software Systems Engineer",
+      "excerpt": "Do you want to help a small company make a BIG difference in space?",
+      "companyName": "Red Canyon Engineering & Software",
+      "companySlug": "red-canyon-engineering-software",
+      "companyLogo": "",
+      "employmentType": "Contractor",
+      "minSalary": null,
+      "maxSalary": null,
+      "salaryPeriod": "hourly",
+      "seniority": [
+        "Senior"
+      ],
+      "currency": "USD",
+      "locationRestrictions": [
+        "United States"
+      ],
+      "timezoneRestrictions": [
+        -10,
+        -9,
+        -8,
+        -7,
+        -6,
+        -5,
+        14
+      ],
+      "categories": [
+        "Systems-Engineering",
+        "Aerospace-Engineering",
+        "Software-Systems-Engineering",
+        "Spacecraft-Engineering",
+        "Flight-Software-Engineering",
+        "Principal-Software-Engineer",
+        "Principal-Systems-Engineer",
+        "Principal-Software-Development-Engineer",
+        "Principal-Software-Engineering",
+        "Senior-Systems-Software-Engineer",
+        "Software-Systems-Engineer",
+        "Principal-Systems-Developer",
+        "Systems-Software-Engineer",
+        "Principal-Software-Developer"
+      ],
+      "parentCategories": [
+        "Developer"
+      ],
+      "description": "<div>Do you want to help a small company make a BIG difference in space? Do you take ownership of your job and responsibility for your actions? Then come work for Red Canyon and help us continue our mission of helping humankind reach the stars!</div><div>\n<p>Red Canyon Software is looking for an enthusiastic and creative Principal Software Systems Engineer (Contract) to design and analyze new satellite and aerospace systems. We're looking for candidates who can bring exceptional engineering skills and strong experience in aerospace programs to the team.</p>\n<h3>Position Responsibilities:</h3>\n<p>The Principal Software Systems Engineer's primary responsibility will be driving the development of customer satellite systems with a focus on flight software delivery. This engineer will be involved in the full lifecycle of development, from requirements definition, validation, verification and operations. Being at the cutting edge of space technology, we need someone who is eager to learn, grow, and take on new and potentially unfamiliar challenges. There is no shortage of fascinating problems to solve.</p>\n<p>The Principal Software Systems Engineer will provide autonomous solutions of complex problems, through direct work or delegation, under the leadership of the Systems Engineering Manager. The Principal Systems Engineer will have project and subject matter responsibility and authority.</p>\n<h3>Systems Engineering 75%</h3>\n<ul>\n<li>Perform systems engineering tasks for satellite ",
+      "pubDate": 1789341689,
+      "expiryDate": 1794525688,
+      "applicationLink": "https://himalayas.app/companies/red-canyon-engineering-software/jobs/principal-software-systems-engineer",
+      "guid": "https://himalayas.app/companies/red-canyon-engineering-software/jobs/principal-software-systems-engineer"
+    },
+    {
+      "title": "Software Engineering Manager",
+      "excerpt": "Job Title: Software Engineering Manager Location: Remote – US Compensation: $130,000 – 160,000 + Bonus Eligible Who we are: Lynx delivers modular, open standards–based software that transforms how high-assurance, mission-critical edge systems are built, deployed, and maintained.",
+      "companyName": "Lynx Software Technologies",
+      "companySlug": "lynx-software-technologies",
+      "companyLogo": "https://cdn-images.himalayas.app/3m0pbbaru4arx4nkkgerqem0g7xz",
+      "employmentType": "Full Time",
+      "minSalary": 130000,
+      "maxSalary": 160000,
+      "salaryPeriod": "annual",
+      "seniority": [
+        "Manager"
+      ],
+      "currency": "USD",
+      "locationRestrictions": [
+        "United States"
+      ],
+      "timezoneRestrictions": [
+        -10,
+        -9,
+        -8,
+        -7,
+        -6,
+        -5,
+        14
+      ],
+      "categories": [
+        "Software-Engineering-Manager",
+        "Engineering-Management",
+        "Software-Development-Management",
+        "Project-Management",
+        "Manager-Software-Engineer",
+        "Engineering-Manager",
+        "Software-Engineering-Management",
+        "Software-Development-Manager",
+        "Technology-Leadership"
+      ],
+      "parentCategories": [
+        "Developer"
+      ],
+      "description": "<div>\n<p><b><strong>Job Title: </strong></b>Software Engineering Manager</p>\n<p><b><strong>Location: </strong></b>Remote – US</p>\n<p><b><strong>Compensation: </strong></b>$130,000 – 160,000 + Bonus Eligible</p>\n<p></p>\n<p><b><strong>Who we are: </strong></b>Lynx delivers modular, open standards–based software that transforms how high-assurance, mission-critical edge systems are built, deployed, and maintained. Our secure edge computing solutions enable innovation and operational excellence in the world’s most demanding environments, from aerospace and defense to commercial and industrial systems. We partner across industries including automotive, medical, and critical infrastructure to deliver tailored solutions aligned with each customer’s mission and operational requirements. Our key products and services are:</p>\n<ul>\n<li>\n<b><strong>MOSA.ic:</strong></b> LYNX MOSA.ic™ is a modular software framework and architecture purpose-built for mission-critical edge computing. Based on the Modular Open Systems Approach (MOSA), it provides a flexible foundation for building secure, scalable, and certifiable edge systems.</li>\n<li>\n<b><strong>LYNX MOSA.ic.AI</strong></b>: LYNX MOSA.ic.AI is a unified CPU and GPU software platform that enables deterministic, certifiable deployment of AI and advanced workloads in mission-critical edge systems. It brings control, performance, and lifecycle governance together, allowing AI to operate predictably within safety-critical environments without",
+      "pubDate": 1787550941,
+      "expiryDate": 1792734940,
+      "applicationLink": "https://himalayas.app/companies/lynx-software-technologies/jobs/software-engineering-manager-5387790663",
+      "guid": "https://himalayas.app/companies/lynx-software-technologies/jobs/software-engineering-manager-5387790663"
+    }
+  ]
+}

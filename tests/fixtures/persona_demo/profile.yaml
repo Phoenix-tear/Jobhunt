@@ -1,0 +1,129 @@
+person:
+  display_name: Alex Chen
+  degree: B.ASc
+  field: Systems Design Engineering
+  institution: University of Waterloo
+  graduation_year: 2026
+  career_stage: student
+
+level_policy:
+  max_required_years: 1
+  years_penalty_per_year: 5.0
+  years_penalty_cap: 10.0
+  junior_boost: 8.0
+  internships_wanted: true
+  graduate_programmes_wanted: true
+  senior_words:
+    - senior
+    - lead
+    - principal
+    - staff
+    - manager
+    - director
+    - architect
+  excluded_roles:
+    - sales
+    - marketing
+    - recruiter
+    - frontend
+    - mobile developer
+    - ios developer
+    - android developer
+  exclude_levels:
+    - senior
+    - lead
+  maybe_levels:
+    - mid
+  exempt_levels:
+    - intern
+    - new_grad
+
+role_families:
+  - id: systems_distributed
+    label: Distributed Systems & Infrastructure
+    keywords:
+      - distributed systems
+      - golang
+      - rust
+      - kubernetes
+      - docker
+      - grpc
+      - raft
+      - consensus
+      - linux
+      - networking
+    title_patterns:
+      - systems engineer
+      - infrastructure engineer
+      - distributed systems
+      - backend systems
+      - platform engineer
+    recipe: systems_infra
+    weight: 1.2
+    score_adjustment: 0.1
+  - id: data_ml_systems
+    label: ML Systems & Data Platforms
+    keywords:
+      - data platform
+      - spark
+      - kafka
+      - ray
+      - flink
+      - stream processing
+      - data pipeline
+    title_patterns:
+      - data platform
+      - ml platform
+      - data systems
+      - data engineer
+    recipe: data_systems
+    weight: 1.0
+    score_adjustment: 0.0
+
+bases:
+  - id: systems
+    label: Systems & Infrastructure Resume
+    tex_path: tests/fixtures/persona_demo/resume_systems.tex
+    optional: false
+  - id: data_infra
+    label: Data Platform Resume
+    tex_path: tests/fixtures/persona_demo/resume_data.tex
+    optional: false
+
+location_policy:
+  home_country: Canada
+  home_cities:
+    - Waterloo
+    - Toronto
+    - Kitchener
+    - Ottawa
+    - Vancouver
+  accepted_regions:
+    - ca
+    - remote_open_to_ca
+  remote_scope_rules:
+    - worldwide
+    - anywhere
+    - north_america
+    - canada
+  workplace_types:
+    - remote
+    - hybrid
+    - onsite
+
+scoring:
+  weight_fit: 0.35
+  weight_similarity: 0.45
+  weight_location: 0.20
+  caps:
+    years_penalty_max: 10.0
+
+paths:
+  facts: tests/fixtures/persona_demo/facts.yaml
+  summaries: tests/fixtures/persona_demo/variants.yaml
+  application_answers: tests/fixtures/persona_demo/application_answers.yaml
+  company_rules: data/company_rules.json
+  learned_rules: tests/fixtures/persona_demo/learned_rules.yaml
+  writing_samples: tests/fixtures/persona_demo/writing_samples.md
+
+candidate_blurb: "University of Waterloo Systems Design Engineering student (Class of 2026) building distributed systems in Go and Rust."

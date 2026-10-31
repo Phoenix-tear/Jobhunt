@@ -1,0 +1,40 @@
+\documentclass[10pt]{article}
+\newcommand{\experienceitem}[4]{\textbf{#1} #2 #3 #4}
+\newcommand{\projectitem}[4]{\textbf{#1} #2 #3 #4}
+\begin{document}
+\begin{center}
+{\Large \textbf{ALEX CHEN}}\\
+{\normalsize Systems Design Engineering Undergraduate}\\
+\href{mailto:alex.chen@uwaterloo.ca}{alex.chen@uwaterloo.ca} \,|\, +1 519 555 0199 \,|\, Waterloo, ON
+\end{center}
+\section{Summary}
+Final-year Waterloo systems engineering student building distributed infrastructure and consensus engines in Go and Rust.
+\section{Education}
+\noindent\textbf{University of Waterloo} \hfill \textit{Expected Apr 2026}\\
+\textit{Bachelor of Applied Science, Systems Design Engineering} \hfill \textit{GPA: 3.9/4.0}
+\section{Professional Experience}
+\experienceitem{Systems Engineering Intern, NorthInfra Corp}{Waterloo, ON}{Jan 2025 - Apr 2025}{
+\begin{itemize}
+  \item Designed high-throughput gRPC services in Go handling 120k requests per second with sub-millisecond p99 latency.
+  \item Automated container cluster deployment using Kubernetes operators and Helm charts on AWS EKS.
+  \item Integrated OpenTelemetry distributed tracing across 14 microservices cutting incident resolution time by 35\%.
+\end{itemize}}
+\section{Projects}
+\projectitem{RaftCore - Distributed Consensus Engine}{Go, Raft, gRPC, BadgerDB}{Sep 2024 - Dec 2024}{
+\begin{itemize}
+  \item Implemented the Raft consensus algorithm from scratch in Go including leader election, log replication, and snapshotting.
+  \item Verified linearizability under simulated network partitions using Jepsen tests with zero state inconsistencies.
+  \item Built persistent write-ahead logging with LSM-tree storage backed by BadgerDB sustaining 50k writes/sec.
+\end{itemize}}
+\projectitem{KubeMesh - eBPF Service Mesh}{Rust, eBPF, Linux, Tokio}{May 2024 - Aug 2024}{
+\begin{itemize}
+  \item Created a lightweight Layer-4 load balancer using Linux eBPF in Rust bypassing socket layer overhead.
+  \item Reduced container-to-container network latency by 42\% compared to standard iptables routing.
+\end{itemize}}
+\section{Skills}
+\noindent\textbf{Languages:} Go, Rust, C++, Python, SQL, Bash\\
+\textbf{Systems \& Cloud:} Kubernetes, Docker, gRPC, Linux Kernel, eBPF, AWS (EKS, EC2, S3), Prometheus, Grafana
+\section{Additional Information}
+\noindent\textbf{Certifications:} \href{https://example.com/cka}{Certified Kubernetes Administrator (CKA)}\\
+\textbf{Interests:} Distributed databases, open source networking, operating systems
+\end{document}

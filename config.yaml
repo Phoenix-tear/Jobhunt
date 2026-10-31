@@ -1,0 +1,792 @@
+# jobhunt configuration (Spring Boot analogy: application.yml).
+# Targets and keyword lists live here; nothing below is hard-coded in the Python modules.
+# Relative paths resolve against the folder containing this file.
+
+# Appended to the User-Agent so site owners can reach you (a GitHub URL or an email).
+# Personal values (this, email.account) live in the gitignored config.local.yaml, which overrides this file.
+user_agent_contact: ""
+
+database_path: data/jobhunt.sqlite3
+cache_dir: data/cache
+migrations_dir: migrations
+
+# ---------------------------------------------------------------------------
+# Who the matching layer works for. "Remote - open to India" means: open to someone living here.
+# ---------------------------------------------------------------------------
+user:
+  home_country: IN
+
+# ---------------------------------------------------------------------------
+# What I am looking for. No location filtering happens at ingest: country and
+# the remote flag are stored, and filtering/ranking happens in a later step.
+# ---------------------------------------------------------------------------
+targets:
+  graduation_year: 2027
+  employment_types: [full_time, internship]
+  regions: [IN, US, GB, CA, DE, SG, AU, remote]   # informational, used later by ranking
+  # Keyword groups per field. They also feed the prefilter's include list.
+  fields:
+    software_engineering: [software, engineer, developer, sde, swe, programmer, technologist, "member of technical staff"]
+    backend: [backend, back-end, back end, distributed systems, infrastructure, devops, sre, cloud]
+    full_stack: [full stack, full-stack, fullstack, frontend, front-end, front end, web developer, mobile developer]
+    data: [data, database, big data, etl, "business intelligence"]
+    ml_ai: [ml, machine learning, ai, artificial intelligence, deep learning, nlp, computer vision, llm, applied scientist, research scientist, mlops]
+
+# ---------------------------------------------------------------------------
+# Title prefilter. Permissive: keep a job if the title matches an include
+# keyword and no exclude keyword. Empty include list keeps everything.
+# ---------------------------------------------------------------------------
+prefilter:
+  extra_include_title_keywords: [intern, internship, graduate, new grad, trainee, co-op, apprentice, "early career", "university grad", "college grad", praktikum, pflichtpraktikum, werkstudent]
+  # Phrases removed from the title before exclude matching ("Technical Staff" must not trip "staff").
+  protected_title_phrases: ["member of technical staff"]
+  exclude_title_keywords:
+    # seniority / management
+    - senior
+    - sr
+    - staff
+    - principal
+    - lead
+    - manager
+    - director
+    - vp
+    - vice president
+    - head of
+    - chief
+    - architect
+    - distinguished
+    # clearly non-tech roles
+    - sales
+    - account executive
+    - business development
+    - recruiter
+    - recruiting
+    - talent acquisition
+    - accountant
+    - accounting
+    - legal
+    - counsel
+    - paralegal
+    - marketing
+    - customer success
+    - customer support
+    - human resources
+    - hr
+    - payroll
+    - finance
+    - financial
+    - executive assistant
+    - administrative
+    - receptionist
+    - nurse
+    - driver
+    - warehouse
+    - copywriter
+    - mechanical
+    - civil
+    - chemical
+    - electrician
+    # contract / crowd-work postings that slip in through the "ai" keyword
+    - freelance
+    - trainer
+    - annotator
+    - contributor
+
+# ---------------------------------------------------------------------------
+# Step 3: the relevance gate (deterministic, cheapest layer). Nothing is deleted: every excluded
+# job keeps the rule and sentence that excluded it, and editing this section recomputes the
+# verdicts on the next `relevance-run` (same retroactive behaviour as the prefilter).
+# Phrases match whole words, case-insensitive, hyphens/slashes treated as spaces.
+# ---------------------------------------------------------------------------
+relevance:
+  target_graduation_year: 2027      # a new-grad / intern posting that names other class years is excluded
+  internships_must_be_current: true # an internship whose stated term has already ended is excluded
+  seniority:
+    exclude_at_years: 2             # description requires this many years (lower bound of "2-4", "2+") or more -> excluded (rule required_years)
+    maybe_at_years: 1               # exactly this many -> "maybe" (reason required_years_borderline); "0-1", "0-2", none: unaffected
+    exempt_levels: [intern, new_grad]   # explicit intern / new-grad postings skip the years rule
+    exclude_levels: [senior]        # stored experience_level values that are excluded outright
+    maybe_levels: [mid]             # (legacy: source-derived levels; the title rules below are stricter)
+    # junior_only: a title that reads mid / senior / executive (VP, AVP, director, principal, senior, staff,
+    # lead, manager, architect, "Engineer II" and up, level codes below) is excluded. Rule-based, no LLM.
+    # off: ignore title seniority (the years-of-experience rule still applies).
+    mode: junior_only
+    # Employer grade codes found in real postings (enterprise career sites). `scope: any` also looks at the
+    # first 600 characters of the description. Evidence per rule is listed in the overnight reports.
+    level_code_rules:
+      - {name: "Citi C11-C19", pattern: "\\bC(?:1[1-9])\\b", level: senior, scope: any,
+         note: "Citi grade C11/C12 appear on 'Programmer Analyst - C12', 'AVP C12-...'"}
+      - {name: "Citi C10", pattern: "\\bC10\\b", level: mid, scope: any, note: "Citi 'Intermediate' analysts are C10"}
+      - {name: "Officer title suffix", pattern: "(?:[,\\-\u2013]\\s*officer\\b|\\b(?:engineer|developer|analyst|programmer|scientist)\\s+officer\\s*$)", level: senior, scope: title,
+         note: "State Street / Citi 'Engineer, Officer' = assistant-vice-president equivalent grade"}
+  titles:
+    # "AI" / "ML" alone are too common ("AI Data Collector", "Data Capture Technician - AI"): they count
+    # as a target only when the title also names a technical role noun.
+    ai_ml_bare: [ai, ml]
+    role_nouns: [engineer, engineers, engineering, developer, scientist, researcher, programmer, architect, specialist,
+                 intern, internship, trainee, sde, swe, "member of technical staff",
+                 "工程师", "开发", "算法", "科学家", "エンジニア"]
+    ai_ml:
+      - applied ai
+      - ai engineer
+      - ai developer
+      - ai scientist
+      - ai researcher
+      - ai software engineer
+      - machine learning
+      - deep learning
+      - genai
+      - gen ai
+      - generative ai
+      - llm
+      - llms
+      - agentic
+      - ai agent
+      - nlp
+      - natural language
+      - data scientist
+      - data science
+      - forward deployed
+      - applied scientist
+      - applied research
+      - computer vision
+      - mlops
+      - artificial intelligence
+      - conversational ai
+      - prompt engineer
+    fullstack:
+      - full stack
+      - fullstack
+      - software engineer
+      - software engineering
+      - software developer
+      - software development
+      - sde
+      - swe
+      - backend
+      - back end
+      - frontend
+      - front end
+      - web developer
+      - web engineer
+      - web development
+      - python developer
+      - python engineer
+      - react
+      - nextjs
+      - next js
+      - node
+      - nodejs
+      - typescript
+      - javascript
+      - python
+      - fastapi
+      - member of technical staff
+    # Weak software words: a target on their own ("Developer"), but a lower-priority focus in the
+    # title wins ("Android Developer" -> mobile, "Salesforce Developer" -> salesforce).
+    fullstack_weak:
+      - software                    # "Software Co-op", "Software Intern" (any lower-priority focus still wins)
+      - application developer
+      - application engineer
+      - developer
+      - programmer
+    maybe:                          # plausible, but worth a second look
+      - research scientist
+      - research engineer
+      - solutions engineer
+      - solutions architect
+      - technical consultant
+      - technology analyst
+      - qa automation
+      - sdet
+      - test automation
+    lower_priority:                 # allowed, ranked lower
+      devops: [devops, site reliability, sre, cloud engineer, platform engineer, infrastructure engineer, cloud]
+      data_engineering: [data engineer, analytics engineer, etl, big data, data platform, database engineer, data analyst]
+      mobile: [android, ios, mobile, flutter, react native]
+      salesforce: [salesforce, agentforce, sfdc, apex developer, apex engineer, crm developer]
+    ai_boost: [agentforce, einstein, salesforce ai, genai, generative ai, llm, ai agent]   # lower-priority families, AI side
+    # v4: titles that look like software work but sit in a domain I am not targeting. They are `maybe`
+    # (visible, ranked lower), never excluded: from the 60 gold labels, no relevant job matches any phrase.
+    off_domain:
+      game_dev: [gameplay, game engine, game developer, game programmer, game engineer, game development,
+                 unreal, unity developer, unity engineer, unity 3d]
+      low_code: [power platform, power apps, power automate, dynamics 365, dynamics crm, d365, low code, no code,
+                 outsystems, mendix, appian]
+    cjk_title_is_maybe: true         # a title with Japanese / Chinese / Korean characters usually needs that language
+    generic: [engineer, engineering, intern, trainee, associate, analyst, technologist, "technology intern"]
+    tech_signal_min: 4              # a generic title needs this many distinct tech words in the description
+    tech_signals: [python, javascript, typescript, react, node, api, apis, backend, frontend, software, cloud, aws,
+                   machine learning, llm, sql, docker, microservices, rest, git, algorithms, data structures,
+                   kubernetes, etl, pipelines, ci cd, terraform]
+    exclude:
+      # languages / stacks I do not want as the primary stack (see excluded_stacks for the description rule)
+      - java developer
+      - java engineer
+      - java software
+      - java full stack
+      - java backend
+      - java spring
+      - spring boot developer
+      - .net
+      - dotnet
+      - c#
+      - csharp
+      - asp.net
+      - php
+      - sap
+      - abap
+      - mainframe
+      - cobol
+      # not software work for me
+      - manual qa
+      - manual test
+      - manual testing
+      - it support
+      - helpdesk
+      - help desk
+      - service desk
+      - desktop support
+      - embedded
+      - firmware
+      - sales
+      - recruiter
+      - recruiting
+      - marketing
+      - marketer
+      - leader
+      - customer experience
+      - cx engineer
+      - account executive
+      - business development
+      - electrical
+      - mechanical
+      - civil
+      - chemical
+      - hardware
+      - manufacturing
+      - aerospace
+      - optical
+      - rf engineer
+      - field engineer
+      - process engineer
+      - quality engineer
+      - validation engineer
+      - sales engineer
+      - customer engineer
+      - support engineer
+      - technical support
+  # Primary-stack rule: an excluded language that the posting REQUIRES (not "a plus"), with none of
+  # allowed_stacks required, excludes the job. "Python or Java" and "Java a plus" are kept.
+  excluded_stacks:
+    java: [java]
+    dotnet: [".net", dotnet, "c#", csharp, "asp.net"]
+    php: [php, laravel]
+    sap_abap: [sap, abap]
+    mainframe: [mainframe, cobol]
+  allowed_stacks: [python, javascript, typescript, node, nodejs, react, nextjs, nestjs, fastapi, django, flask, angular, vue]
+  # Education / citizenship flags found in posting text (matching/eligibility.py): a `required` flag keeps the job at
+  # `maybe` at best and caps its score at scoring.eligibility_cap. Simplify's degree lists are information only unless true.
+  eligibility_source_lists_required: false
+  soft_markers: [a plus, nice to have, nice-to-have, bonus, preferred, desirable, good to have, an advantage, advantageous,
+                 familiarity, exposure, plus]
+
+# ---------------------------------------------------------------------------
+# Resumes -> profiles. The PDFs stay on this machine (data/ is gitignored); only the PII-stripped
+# text built by `profile-build` is ever embedded or sent to a model.
+# ---------------------------------------------------------------------------
+profiles:
+  resume_dir: data/resumes
+  profile_dir: data/profile
+  files: {ai: resume_ai.tex, fullstack: resume_fullstack.tex, backend: resume_backend.tex}   # LaTeX sources are the source of truth
+  optional: [backend]        # skipped silently when the file is absent; write data/resumes/resume_backend.tex yourself (Java / Spring Boot)
+  authoritative: ai          # where the two resumes disagree, this one wins
+  person_name: ""            # only needed if the first line of a resume is not your name
+
+# ---------------------------------------------------------------------------
+# Gemini (paid key in .env as GEMINI_API_KEY). Only PII-stripped profile text and job text are
+# ever sent. Model ids and prices were checked against Google's own pages on 2026-10-14.
+# ---------------------------------------------------------------------------
+gemini:
+  base_url: https://generativelanguage.googleapis.com/v1beta
+  timeout_seconds: 90
+  max_retries: 5                 # on 429 / 5xx / network errors; Retry-After is honored when sent
+  backoff_base_seconds: 4.0
+  backoff_max_seconds: 60
+  retry_after_cap_seconds: 120
+
+embedding:
+  provider: gemini            # gemini | local: local embeds on your GPU via Ollama (free)
+  local_model: nomic-embed-text
+  local_dimensions: 768
+  model: gemini-embedding-2          # text up to 8,192 tokens; no task_type, the task goes in the prompt text
+  fallback_model: gemini-embedding-001   # task_type supported; vectors below 3072 dims need manual normalization
+  dimensions: 768                    # a recommended size (128-3072); embedding-2 renormalizes automatically
+  prompt_version: v1                 # bump if the text format changes: every vector is re-embedded
+  description_token_limit: 1500      # description is cut to about this many tokens (~4 characters each)
+  batch_size: 50                     # texts per batchEmbedContents request
+  max_concurrent_batches: 4
+  max_tokens_per_minute: 500000      # self-imposed pacing; a first full run hit Google's 429 without it
+
+# Which side tasks may call Gemini. Everything is off by default: the rules (workplace and remote parsing,
+# seniority, the gate) answer these, and an optional local model can. Only the final fit score uses Gemini.
+llm:
+  classify_enabled: false
+  workplace_enabled: false
+  remote_enabled: false
+
+# Resume tailoring: select / reorder ticked facts for one job, validate (no fabrication), render LaTeX -> PDF.
+# Tailoring only runs on request (the "Tailor resume" button or `tailor <job_id>`), never in a pipeline.
+# The model's job is narrow and verifiable: choose the recipe / summary variant, rank bullets, extract job
+# keywords. It never writes resume text; summaries are approved variants (data/profile/summaries.md).
+tailoring:
+  llm_enabled: true          # false: deterministic recipe / keyword selection only (no model call)
+  provider: gemini           # gemini | anthropic (set ANTHROPIC_API_KEY in .env; never required)
+  model: gemini-2.5-pro      # strongest generally available Pro-tier model with structured output (3.1 Pro is preview)
+  fallback_model: gemini-3.8-flash
+  anthropic_model: claude-sonnet-5-5
+  max_output_tokens: 4000    # includes thinking tokens
+  target_fill_min: 0.92
+  blank_threshold: 0.06
+  top_n_max: 20
+  variants_file: data/profile/summaries.md
+  # v7: relevance-driven selection (instead of "start full, trim, fill").
+  project_relevance_threshold: 0.12   # a project must cover this share of the job's weighted concepts to be shown on merit
+  low_relevance_bullets: 2            # a below-threshold project that is only here to fill the page keeps its 2 best bullets
+  max_bullets_per_project: 5          # spare space goes to extra bullets of the most relevant entries, up to this many
+  domain_bonus: 0.08                  # relevance bonus when a project matches the job's domain (finance / banking)
+  strength_low_below: 0.50            # Tailoring strength = 70% job coverage + 30% how much differs from the base: under this is Low
+  strength_high_from: 0.75            # from this score on it is High
+  # Master profile: every ticked project of either resume may appear on either base. `base` only sets the starting
+  # layout and default order; page fit and the recipe decide which projects and how many bullets. `projects` is the
+  # (project names below are placeholders: set real heading fragments under tailoring.recipes in config.local.yaml)
+  # pinned order: "a|b" means whichever of a / b matches the job's keywords better goes first.
+  recipes:
+    ai_agents_rag:
+      base: ai
+      triggers: [rag, agents, llm, genai, langchain, vector database, embeddings, prompt engineering]
+      summary_variant: S1
+      projects: [project-one, project-two]
+      must_keep_phrases: [prompt injection, guardrail, pii]
+      lead_skill_groups: ["AI & LLMs", "ML & GenAI"]
+    ml_data:
+      base: ai
+      triggers: [machine learning, data science, pytorch, tensorflow, statistics, scikit-learn, xgboost, pandas, nlp,
+                 computer vision, deep learning]
+      summary_variant: S2
+      projects: [project-one, project-two]
+      must_keep_phrases: [xgboost, walk-forward, baseline]
+      lead_skill_groups: ["ML & Data", "AI & LLMs"]
+    fullstack:
+      base: fullstack
+      triggers: [react, next.js, typescript, javascript, html/css, tailwind, node.js, graphql]
+      summary_variant: S3
+      projects: ["project-three|project-one", project-two]
+      must_keep_phrases: [1000+]
+      lead_skill_groups: ["Frontend", "Backend & Databases"]
+    backend_swe:
+      base: ai
+      triggers: [api, rest, microservices, docker, postgresql, redis, kafka, java, sql, devops]
+      summary_variant: S4
+      projects: ["project-one|project-three", project-two]
+      must_keep_phrases: [pytest, ci, 99.9]
+      lead_skill_groups: ["Backend & Cloud", "Backend & Databases"]
+    salesforce:
+      base: ai
+      triggers: [salesforce]
+      summary_variant: S5
+      projects: [project-one, project-two]
+      must_keep_phrases: [prompt injection, guardrail, structured outputs]
+      lead_skill_groups: ["AI & LLMs"]
+      certifications_first: true
+    java_backend:             # only selectable when data/resumes/resume_backend.tex exists (a base you write yourself)
+      base: backend
+      triggers: [java, spring boot, jpa/hibernate, junit, sql, rest, docker, aws, microservices, oracle, mysql]
+      summary_variant: S4
+      projects: []
+      must_keep_phrases: []
+      lead_skill_groups: ["Backend", "Java"]
+    fintech_bank:
+      base: ai
+      triggers: [bank, banking, fintech, financial, payments, trading, risk, compliance, regulatory, finance]
+      summary_variant: S1
+      projects: [project-one, project-two]
+      must_keep_phrases: [prompt injection, guardrail, pii, read-only, redact]
+      lead_skill_groups: ["AI & LLMs", "Backend & Cloud"]
+
+# Daily automation (Windows Task Scheduler, user level, no admin): `schedule-install --yes`, `schedule-status`,
+# `schedule-remove`. Times are local to `timezone`. Tasks only run while you are logged on, catch up after a missed
+# start, stop after `execution_limit_hours`, and the heavy ones (ingest, match, discover) do not start on battery.
+schedule:
+  timezone: Asia/Kolkata
+  ingest_times: ["06:30", "19:00"]     # after the Gemini daily cap resets (05:30 IST)
+  ollama_ensure_time: "06:40"
+  match_time: "06:45"
+  email_every_hours: 4
+  email_since_days: 2
+  discover_day: Sunday
+  discover_time: "03:00"
+  wake_to_run: false                   # true: let a task wake the computer
+  execution_limit_hours: 3
+  queued_lock_wait_minutes: 240        # match and ingest-email wait this long behind a running ingest (~2.2 h)
+  queued_execution_limit_hours: 6      # their Task Scheduler time limit; the wait counts against it
+  missed_runs_warning: 2
+
+# Cover letter and answer helper (button click only, one model call per click, cached, counted against the cap).
+writing:
+  model: gemini-2.5-pro     # letters and answers write real text; tailoring.model (advice only) can be the cheaper one
+  cover_words_min: 220
+  cover_words_max: 300
+  answer_words_default: 150
+  # v7: one click = plan (tailoring.model) -> write (this model) -> edit (this model), 3 calls, up to 5 with the one
+  # automatic retry; all counted against budget.interactive_daily_calls. `single` restores the v1 one-call writer.
+  pipeline: staged
+  edit_enabled: true
+  max_attempts: 2
+  max_usd_per_click: 0.10      # a click is at most 6 calls and this many dollars (write ladder: model, same model + feedback, flash + feedback)
+  thinking_budget: 1024        # gemini-2.5-pro cannot switch thinking off; unbounded it spent ~3,990 of 4,000 output tokens and the JSON was cut off
+  voice_file: data/profile/writing_samples.md   # optional: 1-3 of your own paragraphs; contact details are stripped
+
+# Location policy: India (any workplace) or remote-and-open-to-India. Everything else is `wrong_location` /
+# `abroad_unknown_workplace`: hidden by default, never deleted ("Show other locations" in the site).
+location:
+  accept_workplace_in_india: [remote, hybrid, onsite]
+  accept_abroad: [remote_open_to_india]
+  show_other_locations_default: false
+
+# Optional local LLM tier on your GPU via Ollama (127.0.0.1). A task is switched on only when its benchmark
+# (scripts/bench_local_llm.py) met the threshold: see README "Local models". The stage runs after embeddings,
+# is time-boxed, and unloads the model afterwards.
+local_llm:
+  enabled: false
+  model: qwen3:4b
+  workplace: false
+  classify: false
+  prescore: false
+  workplace_limit: 150
+  classify_limit: 100
+  prescore_top: 150
+  per_job_timeout_seconds: 90
+  time_box_seconds: 1500
+
+models:
+  classify: gemini-3.5-flash-lite    # borderline `maybe` jobs and ambiguous remote cases (cheap, minimal thinking)
+  score: gemini-3.8-flash            # final scoring of the daily shortlist
+  classify_thinking: minimal         # thinking_level; thinking tokens are billed as output
+  score_thinking: low                # lowest documented level for 3.8 Flash
+
+# v8 LLM triage: a judge returns a seniority / location verdict per job with verbatim evidence quotes (checked in code).
+# The daily pipeline judges only the top un-judged shortlist within budget.triage_daily_calls; `triage-backfill` has its own limits.
+triage:
+  enabled: true
+  primary_judge: gemini       # gemini | local_llm | gemini_if_local_flags
+  model: gemini-3.8-flash
+  thinking: low
+  rubric_version: v1          # bump it and every cached verdict is judged again
+  jobs_per_call: 5
+  shortlist_size: 100
+  exclude_years_min: 2        # verified required years at or above this exclude the job (`llm_seniority`)
+  student_enabled: true       # rules and a small classifier mined from verdicts; they only demote, never exclude
+  student_precision: 0.90
+  student_min_support: 5
+  # v9 cascade settings (rules -> local classifier -> local LLM -> Gemini only when unsure):
+  local_llm_model: qwen2.5:7b-instruct
+  local_llm_max_minutes: 60
+  candidate_shortlist_top: 300
+  gemini_shortlist_top: 100
+  heads:
+    seniority:
+      mode: shadow
+      act_threshold: 0.90
+      abstain_low: 0.40
+    location:
+      mode: shadow
+      act_threshold: 0.90
+      abstain_low: 0.40
+    eligibility:
+      mode: shadow
+      act_threshold: 0.90
+      abstain_low: 0.40
+
+# USD per 1M tokens, paid tier, text. Source: https://ai.google.dev/gemini-api/docs/pricing
+# ("Last updated 2026-10-13 UTC", read 2026-10-14). Third-party price pages disagree: only Google's counts.
+pricing:
+  as_of: 2026-10-14
+  source: https://ai.google.dev/gemini-api/docs/pricing
+  fallback_input_per_million: 1.0    # placeholder (not on the page) for any model listed nowhere below
+  fallback_output_per_million: 4.0
+  models:
+    gemini-embedding-2:     {input: 0.20}
+    gemini-embedding-001:   {}       # not listed on that page: the fallback above is used
+    gemini-3.5-flash-lite:  {input: 0.30, output: 2.50}
+    gemini-3.1-flash-lite:  {input: 0.25, output: 1.50}
+    gemini-3.8-flash:       {input: 0.75, output: 3.75, changes_on: "2027-01-01", then_input: 1.50, then_output: 7.50}
+    gemini-3.6-flash:       {input: 0.75, output: 3.75, changes_on: "2027-01-01", then_input: 1.50, then_output: 7.50}
+    gemini-2.5-pro:         {input: 1.25, output: 10.00}     # prompts <= 200k tokens (pricing page, 2026-10-15)
+    gemini-3.1-pro-preview: {input: 2.00, output: 12.00}     # preview model, prompts <= 200k tokens
+    claude-sonnet-5-5:      {input: 3.00, output: 15.00}     # PLACEHOLDER: verify on Anthropic's pricing page before enabling
+
+budget:
+  daily_calls: 200            # generateContent calls per UTC day (classify + score); stops and logs at the cap
+  interactive_daily_calls: 40 # tailor, cover_letter, answer and experiment calls per UTC day (separate from the above)
+  monthly_usd: 10.0           # estimated spend per UTC month across everything; stops and logs at the cap
+  daily_embedding_texts: 20000
+  triage_daily_calls: 30       # LLM verdict (triage) calls per UTC day in the daily pipeline; the backfill has its own limits
+
+# ---------------------------------------------------------------------------
+# Final score (0-100), a weighted average so it never saturates:
+#   final = w_fit * fit + w_pct * percentile + w_loc * location_score + adjustments
+#   fit            the LLM score when the job was scored, else cosine similarity scaled so that
+#                  similarity_floor -> 0 and similarity_ceiling -> 100
+#   percentile     this job's rank among all embedded open jobs (0..100)
+#   location_score 0..100 per kind of location (India / remote open to India rank first)
+#   adjustments    gate family rank_adjust x rank_adjust_scale (lower-priority families, AI-side
+#                  Salesforce boost) and a small penalty per year of required experience
+# Weights are normalized, so they need not sum to 1. Visa sponsorship is never a penalty. Every
+# component is stored per job, so the site can explain a rank.
+# ---------------------------------------------------------------------------
+scoring:
+  top_k: 50                      # at most this many jobs are scored by Gemini per run (each job once)
+  junior_boost: 6                # points for an explicit junior role; unspecified seniority gets none
+  batch: true                    # true: `match` submits scoring to the Batch API (50% price) and collects it next night
+  prompt_style: compact          # compact (cards + trimmed posting, ~1,000 input tokens) | full (v2 prompt)
+  recent_days: 14                # only jobs first seen within this many days are shortlisted
+  classify_limit: 40             # borderline `maybe` jobs triaged per run (cheap model)
+  workplace_limit: 80            # top-ranked jobs whose workplace is still unknown get one cheap LLM check
+  weight_fit: 0.55
+  weight_similarity_percentile: 0.25
+  weight_location: 0.20
+  similarity_floor: 0.55
+  similarity_ceiling: 0.75
+  rank_adjust_scale: 100
+  years_penalty_per_year: 6      # points off per year of required experience ...
+  years_penalty_cap: 12          # ... capped here
+  irrelevant_fit: 10
+  eligibility_cap: 50            # likely-ineligible postings (PhD / Master's / citizenship required) are capped here
+  injection_score_cap: 50
+  excluded_role_cap: 30
+  max_output_tokens_score: 700
+  max_output_tokens_classify: 250
+  location:                      # 0-100 per kind of location
+    home_country_onsite: 100     # India-located roles rank first ...
+    remote_open_to_home: 100     # ... together with remote roles that are open to India
+    remote_unclear: 40
+    abroad: 25                   # abroad roles stay included
+    remote_restricted_elsewhere: 0
+    unknown: 30                  # no location information at all
+
+# ---------------------------------------------------------------------------
+# Rule-based classification (no LLM). Matched as whole words, case-insensitive.
+# ---------------------------------------------------------------------------
+classification:
+  intern_keywords: [intern, interns, internship, internships, co-op, coop, "summer analyst", "placement year", "industrial placement", praktikum, pflichtpraktikum, praktikant, werkstudent, stagiaire]
+  new_grad_keywords: [new grad, new graduate, recent graduate, university graduate, college graduate, university grad, college grad, graduate, "graduate engineer trainee", "early career", fresher, "graduate program", "graduate scheme", trainee]
+  entry_keywords: [entry level, entry-level, junior, jr, associate, "sde i", "sde 1", "sde-1", "software engineer i", "software engineer 1", "engineer i", "engineer 1", "developer i", "developer 1", "level 1"]
+  mid_keywords: ["sde ii", "sde 2", "sde-2", "software engineer ii", "software engineer 2", "engineer ii", "engineer 2", "developer ii", "developer 2", mid-level, "mid level", intermediate]
+  senior_keywords: [senior, sr, staff, principal, lead, manager, director, head of, vp, vice president, architect, distinguished, "sde iii", "sde 3", "engineer iii", "engineer 3", "engineer iv", "engineer 4"]
+  part_time_keywords: [part-time, part time]
+  contract_keywords: [contract, contractor, "fixed term", fixed-term, temporary, freelance, consultant]
+  full_time_keywords: [full-time, full time, permanent]
+  # Extra city -> ISO-2 mappings on top of the built-in table (lower-case city names).
+  extra_city_countries: {}
+
+# ---------------------------------------------------------------------------
+# HTTP behaviour
+# ---------------------------------------------------------------------------
+http:
+  timeout_seconds: 20
+  max_retries: 3                  # retries after the first attempt, on 429 / 5xx / network errors
+  backoff_base_seconds: 1.0       # exponential backoff with jitter
+  backoff_max_seconds: 30
+  retry_after_cap_seconds: 60     # a longer Retry-After than this is treated as "give up for now"
+  max_workers: 8
+  default_min_interval_seconds: 0.25   # per-host spacing between requests
+  host_min_interval_seconds:
+    index.commoncrawl.org: 2.0
+    api.smartrecruiters.com: 0.5
+    remotive.com: 31.0            # provider terms: at most 2 requests per minute
+    api.adzuna.com: 2.6           # provider terms: 25 hits per minute
+    himalayas.app: 1.0
+    jobicy.com: 2.0
+    hn.algolia.com: 0.5
+    api.github.com: 1.0
+
+# ---------------------------------------------------------------------------
+# Lifecycle rules
+# ---------------------------------------------------------------------------
+lifecycle:
+  missed_runs_to_close: 3                 # consecutive clean misses before a job is closed
+  failures_to_deactivate: 3               # consecutive failures ...
+  distinct_failure_days_to_deactivate: 2  # ... spanning at least this many UTC days
+  inactive_recheck_days: 30
+  # False-mass-closure guard: a board that suddenly returns (almost) nothing is not trusted.
+  suspicious_drop_min_previous_jobs: 10
+  suspicious_drop_ratio: 0.1
+  suspicious_empty_runs_before_accept: 3
+  detail_fetch_cap_per_company: 200       # SmartRecruiters detail calls per company per run
+
+# ---------------------------------------------------------------------------
+# Freshness: posting age bands and automatic hiding of stale jobs (no model). A stale job is NOT deleted: it moves to the
+# "Auto-hidden" view (reason auto_stale) with a one-click Restore; a restored job is never hidden again. Saved / applied /
+# tailored jobs are never auto-hidden. Defaults come from an analysis of job ages per source; see docs/DECISIONS.md (v6).
+# ---------------------------------------------------------------------------
+freshness:
+  enabled: true
+  fresh_days: 30                  # age <= 30 days: fresh
+  stale_after_days: 45            # 31..45 days: aging; older: stale (override per source below)
+  source_stale_after_days: {greenhouse: 90}   # Greenhouse postings stay visible 90 days (employer boards keep long-lived reqs listed)
+  internship_stale_after_days: 90 # internships / graduate programmes: stale only after 90 days, never while a deadline or a
+                                  # season (Summer 2027 ...) is still ahead
+  unknown_stale_after_days: 30    # posting date unknown: stale if first seen > 30 days ago AND the source is an aggregator /
+                                  # curated list; otherwise the job shows an "age unknown" chip
+  aggregator_sources: [simplify_internships, simplify_newgrad, arbeitnow, remoteok, remotive, jobicy, himalayas, weworkremotely, adzuna, hackernews]
+  liveness:                       # "Check if still open" and the daily shortlist check at the start of scoring in `match`
+    max_requests_per_run: 100
+    seconds_between_requests: 1.0
+    cache_hours: 24
+    timeout_seconds: 15
+    max_redirects: 4
+
+# ---------------------------------------------------------------------------
+# Discovery
+# ---------------------------------------------------------------------------
+discovery:
+  probe_batch_size: 50
+  probe_min_interval_hours: 12
+  default_probe_limit: 300      # boards probed per run (a nightly run drains the backlog over a few weeks)
+  snowball: true
+  seed_file: seeds/companies.yaml
+  common_crawl:
+    enabled: true
+    index_base_url: https://index.commoncrawl.org
+    crawls_to_query: 1            # most recent N crawls
+    max_pages_per_pattern: 25     # CDX pages per URL pattern per crawl (caps load on their server)
+    patterns:
+      - {ats: greenhouse,      url: "boards.greenhouse.io/*"}
+      - {ats: greenhouse,      url: "job-boards.greenhouse.io/*"}
+      - {ats: lever,           url: "jobs.lever.co/*"}
+      - {ats: lever,           url: "jobs.eu.lever.co/*"}
+      - {ats: ashby,           url: "jobs.ashbyhq.com/*"}
+      - {ats: workable,        url: "apply.workable.com/*"}
+      - {ats: smartrecruiters, url: "jobs.smartrecruiters.com/*"}
+      - {ats: recruitee,       url: "*.recruitee.com"}
+  openroles:
+    # Slug lists from github.com/datascry/openroles (data: CC BY-SA 4.0). Fetched at run
+    # time into the local, gitignored database only; never vendored into this repository.
+    enabled: false
+    base_url: https://raw.githubusercontent.com/datascry/openroles/main/data/tenants
+    only_status: live
+
+# ---------------------------------------------------------------------------
+# Sources. Phase 2 = the ATS adapters, phase 3 = aggregators, feeds, curated lists.
+# Every block can be switched off with `enabled: false`; remaining keys are per-source options.
+# Feeds also accept: min_interval_hours, max_fetches_per_day (can only lower the provider's cap),
+# stale_after_days (age at which an unseen job is closed).
+# ---------------------------------------------------------------------------
+sources:
+  # --- ATS job boards (one request set per discovered company) ---
+  greenhouse:      {enabled: true}
+  lever:           {enabled: true}
+  ashby:           {enabled: true}
+  workable:        {enabled: true}
+  smartrecruiters: {enabled: true}
+  # Recruitee requires a per-company X-Careers-Sites-Token from 2027-02-10 (see README).
+  recruitee:       {enabled: true}
+
+  # --- large employers' own career sites (companies come from `detect-ats`; see enterprise_companies.yaml) ---
+  workday:
+    enabled: true
+    queries: [software engineer, SDE, developer, data scientist, machine learning, AI, graduate, intern, associate engineer]
+    per_company_cap: 400          # hard cap of postings kept per company per run
+    detail_cap_per_company: 150   # description requests, only for titles that pass the prefilter
+    requests_per_minute: 20       # per host, one request at a time
+    max_pages_per_query: 10       # 20 postings per page
+    max_companies_per_run: 60
+
+  amazon_jobs:                    # amazon.jobs public search.json (robots.txt allows /en/search.json, rechecked 2026-10-14)
+    enabled: true
+    queries: [software engineer, software development engineer, SDE, machine learning, ML engineer, data scientist,
+              data engineer, applied scientist, research scientist, backend engineer, full stack, frontend engineer,
+              cloud engineer, intern, graduate, new grad, university]
+    countries: [IND]              # India only: the feed has no "remote, open to India" flag ("US, Virtual" is US-only)
+    per_run_cap: 1200
+    requests_per_minute: 10
+    max_pages_per_query: 8
+
+  eightfold:                      # Eightfold career sites: anonymous /api/pcsx/search the page itself calls
+    enabled: true
+    per_company_cap: 400
+    detail_cap_per_company: 150
+    requests_per_minute: 20
+    locations: [India, Remote]
+  phenom:                         # Phenom career sites: anonymous POST /widgets the search page calls
+    enabled: true
+    per_company_cap: 400
+    requests_per_minute: 20
+  oracle:                         # Oracle Recruiting Cloud candidate-experience sites (anonymous requisition list)
+    enabled: true
+    per_company_cap: 400
+    requests_per_minute: 20
+
+  # --- remote-job aggregators / feeds (attribution is stored per sighting) ---
+  remotive:        {enabled: true, categories: [software-dev, data]}   # terms: max 4 fetches/day, 2/min
+  remoteok:        {enabled: true}
+  weworkremotely:  {enabled: true}   # option: feeds: [rss urls]
+  himalayas:       {enabled: true, queries: [software engineer, machine learning, data engineer, intern], pages_per_query: 3}
+  jobicy:          {enabled: true, industries: [engineering, data-science], max_pages: 2}   # >= 1h between polls
+  arbeitnow:       {enabled: true, max_pages: 2}
+
+  # --- Adzuna: needs ADZUNA_APP_ID / ADZUNA_APP_KEY in .env, otherwise skipped with a message ---
+  # Official limits: 25/min, 250/day, 1000/week, 2500/month. Budgets below stay under all of them.
+  adzuna:
+    enabled: true
+    countries: [in, us, gb, ca, de, sg, au]
+    queries: [software engineer, graduate software developer, data scientist, machine learning engineer, software intern]
+    results_per_page: 50
+    pages_per_query: 1
+    max_days_old: 14
+    calls_per_run: 40
+    daily_call_budget: 100
+    weekly_call_budget: 900
+    monthly_call_budget: 2200
+
+  # --- Hacker News "Ask HN: Who is hiring?" (Algolia API, no key) ---
+  hackernews:      {enabled: true, threads: 2}
+
+  # --- curated GitHub lists (SimplifyJobs). One file covers summer AND off-season internships. ---
+  # `categories` keeps the tech lists (the files also hold Hardware, Product, Quant...); `terms` is
+  # internships only, e.g. terms: ["Summer 2027", "Fall 2026"] (empty = every term).
+  simplify_internships:
+    enabled: true
+    terms: []
+    categories: [Software, Software Engineering, AI/ML/Data, "Data Science, AI & Machine Learning"]
+  simplify_newgrad:
+    enabled: true
+    categories: [Software, Software Engineering, AI/ML/Data, "Data Science, AI & Machine Learning"]
+
+# ---------------------------------------------------------------------------
+# Phase 4: job-alert emails from sites that must never be scraped (LinkedIn, Naukri, ...).
+# Read-only Gmail access (gmail.readonly); links are parsed with string handling only and are
+# never fetched, except links that already point at a supported ATS (fetched via its public API).
+# Sender lists are a first guess: tighten them once real alert emails have arrived.
+# "@domain" matches the domain and its subdomains; a full address matches exactly.
+# ---------------------------------------------------------------------------
+email:
+  account: ""          # set in config.local.yaml
+  credentials_file: .secrets/credentials.json
+  token_file: .secrets/token.json
+  lookback_days: 14
+  max_messages_per_run: 200
+  resolve_ats_links: true
+  stale_after_days: 30
+  platforms:
+    linkedin:   {enabled: true, senders: ["@linkedin.com"]}
+    naukri:     {enabled: true, senders: ["@naukri.com"]}
+    internshala: {enabled: true, senders: ["@internshala.com"]}
+    indeed:     {enabled: true, senders: ["@indeed.com", "@indeedemail.com"]}
+    wellfound:  {enabled: true, senders: ["@wellfound.com", "@angel.co"]}
+    unstop:     {enabled: true, senders: ["@unstop.com"]}
+    foundit:    {enabled: true, senders: ["@foundit.in", "@monsterindia.com"]}
+    cutshort:   {enabled: true, senders: ["@cutshort.io"]}
+    instahyre:  {enabled: true, senders: ["@instahyre.com"]}
+    glassdoor:  {enabled: true, senders: ["@glassdoor.com", "@glassdoor.co.in"]}

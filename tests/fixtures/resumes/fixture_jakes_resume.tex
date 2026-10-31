@@ -1,0 +1,87 @@
+\documentclass[letterpaper,11pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+\newcommand{\resumeItem}[1]{\item\small{#1}}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Alex Chen} \\ \vspace{1pt}
+    \small 555-0199 $|$ \href{mailto:alex@example.test}{alex@example.test} $|$ 
+    \href{https://linkedin.com/in/alexchen}{linkedin.com/in/alexchen} $|$
+    \href{https://github.com/alexchen}{github.com/alexchen}
+\end{center}
+
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Metropolitan University}{Metro City, NY}
+      {Bachelor of Science in Computer Science; Minor in Mathematics}{Aug 2022 -- May 2026}
+  \resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Data Infrastructure Intern}{May 2025 -- Aug 2025}
+      {Nexus Analytics}{New York, NY}
+      \resumeItemListStart
+        \resumeItem{Engineered ETL pipelines in Apache Airflow ingesting 5M records daily into Snowflake.}
+        \resumeItem{Reduced data processing query runtimes by 28\% through optimized partition pruning.}
+        \resumeItem{Configured Prometheus monitoring dashboards tracking latency and pipeline error rates.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{VectorSearch} $|$ \emph{Python, FastAPI, Qdrant, Docker}}{Jan 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Constructed a semantic document search engine indexing 250,000 academic papers.}
+        \resumeItem{Implemented hybrid keyword-dense vector retrieval achieving a 0.82 Mean Reciprocal Rank.}
+        \resumeItem{Deployed microservices on AWS ECS with auto-scaling policies based on request queuing.}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{QueryGuard} $|$ \emph{TypeScript, Node.js, PostgreSQL}}{Sep 2024 -- Dec 2024}
+      \resumeItemListStart
+        \resumeItem{Developed an automated SQL vulnerability auditor detecting unparameterized queries.}
+        \resumeItem{Integrated tool into GitHub Actions CI catching 14 critical issues prior to production release.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, C++, TypeScript, SQL} \\
+     \textbf{Frameworks}{: FastAPI, React, Node.js, Spring Boot} \\
+     \textbf{Developer Tools}{: Git, Docker, Kubernetes, Snowflake, AWS, GitHub Actions}
+    }}
+ \end{itemize}
+
+\end{document}

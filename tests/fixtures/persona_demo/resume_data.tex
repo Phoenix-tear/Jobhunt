@@ -1,0 +1,33 @@
+\documentclass[10pt]{article}
+\newcommand{\experienceitem}[4]{\textbf{#1} #2 #3 #4}
+\newcommand{\projectitem}[4]{\textbf{#1} #2 #3 #4}
+\begin{document}
+\begin{center}
+{\Large \textbf{ALEX CHEN}}\\
+{\normalsize Systems Design Engineering Undergraduate}\\
+\href{mailto:alex.chen@uwaterloo.ca}{alex.chen@uwaterloo.ca} \,|\, +1 519 555 0199 \,|\, Waterloo, ON
+\end{center}
+\section{Summary}
+Waterloo engineering student with experience building distributed stream processing platforms and large-scale data pipelines.
+\section{Education}
+\noindent\textbf{University of Waterloo} \hfill \textit{Expected Apr 2026}\\
+\textit{Bachelor of Applied Science, Systems Design Engineering} \hfill \textit{GPA: 3.9/4.0}
+\section{Professional Experience}
+\experienceitem{Data Platform Intern, StreamScale Inc}{Toronto, ON}{May 2025 - Aug 2025}{
+\begin{itemize}
+  \item Built Apache Kafka streaming infrastructure ingesting 4TB daily telemetry data into Apache Iceberg lakehouse.
+  \item Implemented Spark Structured Streaming jobs with exactly-once semantics improving pipeline freshness from hours to seconds.
+  \item Tuned JVM memory and GC parameters reducing Spark worker spill-to-disk by 60\%.
+\end{itemize}}
+\section{Projects}
+\projectitem{DeltaStream - Stream Processing Framework}{Scala, Kafka, RocksDB, Arrow}{Jan 2025 - Apr 2025}{
+\begin{itemize}
+  \item Developed a stateful stream processing library with RocksDB state backend and Apache Arrow vectorized execution.
+  \item Benchmarked 500k events/sec throughput with sub-50ms windowed aggregation latency.
+\end{itemize}}
+\section{Skills}
+\noindent\textbf{Languages:} Python, Scala, Java, SQL, Go\\
+\textbf{Data Platforms:} Apache Kafka, Apache Spark, Apache Flink, Apache Iceberg, Ray, PostgreSQL, Docker
+\section{Additional Information}
+\noindent\textbf{Awards:} Waterloo Engineering Dean's Honour List (all terms)\\
+\end{document}

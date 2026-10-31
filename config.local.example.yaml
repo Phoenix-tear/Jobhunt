@@ -1,0 +1,24 @@
+# Copy to config.local.yaml (git-ignored). Anything here wins over config.yaml. Never commit config.local.yaml.
+
+# A URL or email appended to the HTTP User-Agent so site operators can reach you.
+user_agent_contact: ""
+
+email:
+  account: ""            # the Gmail address that receives your job alerts (read-only Gmail API access)
+
+budget:
+  daily_calls: 60        # max paid model calls per day for the pipeline
+  monthly_usd: 5.0       # hard monthly spend cap
+
+embedding:
+  provider: local        # local (Ollama) | gemini
+  local_model: mxbai-embed-large
+  local_dimensions: 1024
+
+tailoring:
+  model: ""              # model id used for tailoring advice
+
+# Optional local-only names for resume-specific checks live in data/profile/terms.yaml (git-ignored):
+#   event_name: Your Event
+#   team_name: Your Team
+#   download_name: Your_Name

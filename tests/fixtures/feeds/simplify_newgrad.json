@@ -1,0 +1,174 @@
+[
+  {
+    "date_updated": 1771505037,
+    "sponsorship": "Offers Sponsorship",
+    "active": true,
+    "degrees": [],
+    "url": "https://jobs.ashbyhq.com/batoncorporation/bb3ab630-5e59-48b5-9794-00a225879a66",
+    "company_name": "Baton Corporation",
+    "title": "Junior Full Stack Engineer",
+    "locations": [
+      "New York, NY"
+    ],
+    "category": "Software Engineering",
+    "source": "SuhaanCoding",
+    "id": "b3298ec2-a195-4322-b6bc-40539c93421f",
+    "date_posted": 1771505037,
+    "company_url": "",
+    "is_visible": true
+  },
+  {
+    "date_updated": 1774934795,
+    "sponsorship": "U.S. Citizenship is Required",
+    "active": true,
+    "degrees": [],
+    "url": "https://job-boards.greenhouse.io/scoutai/jobs/4643333008",
+    "company_name": "Scout AI",
+    "title": "Junior Firmware Engineer",
+    "locations": [
+      "Sunnyvale, CA"
+    ],
+    "category": "Software Engineering",
+    "source": "AlmondCroffle",
+    "id": "723295b5-251b-44de-8933-5939d249aae2",
+    "date_posted": 1774934795,
+    "company_url": "",
+    "is_visible": true
+  },
+  {
+    "source": "Simplify",
+    "category": "AI/ML/Data",
+    "company_name": "WSP",
+    "id": "fca8c004-76a9-436d-a84c-5cf528bd35c3",
+    "title": "Assistant Consultant / Consultant - Air Quality - Basingstoke",
+    "active": true,
+    "date_updated": 1771254685,
+    "date_posted": 1771254685,
+    "url": "https://emit.fa.ca3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2001/job/79046",
+    "locations": [
+      "Basingstoke, UK"
+    ],
+    "company_url": "https://simplify.jobs/c/WSP",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": [
+      "Bachelor's"
+    ]
+  },
+  {
+    "source": "Simplify",
+    "category": "Hardware",
+    "company_name": "Astro Mechanica",
+    "id": "e20f6849-08c5-44dc-8dbe-9b211c7e9cc8",
+    "title": "Flight Software Engineer",
+    "active": true,
+    "date_updated": 1771283830,
+    "date_posted": 1771283830,
+    "url": "https://jobs.ashbyhq.com/astro-mechanica/f25cc28c-9932-4e4d-a7e8-53a10a7fbd55/application",
+    "locations": [
+      "SF"
+    ],
+    "company_url": "https://simplify.jobs/c/Astro-Mechanica",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": [
+      "Bachelor's"
+    ]
+  },
+  {
+    "source": "Simplify",
+    "category": "Hardware",
+    "company_name": "Honeywell",
+    "id": "65b6a15a-a5a3-4e40-907d-7022584646f9",
+    "title": "Hardware Engineer 1",
+    "active": true,
+    "date_updated": 1771427708,
+    "date_posted": 1771427708,
+    "url": "https://ibqbjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Honeywell/job/137946",
+    "locations": [
+      "Clearwater, FL",
+      "Minneapolis, MN"
+    ],
+    "company_url": "https://simplify.jobs/c/Honeywell",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": [
+      "Bachelor's",
+      "Master's"
+    ]
+  },
+  {
+    "source": "Simplify",
+    "category": "Product",
+    "company_name": "JP Morgan Chase",
+    "id": "a4aad8c4-9986-41fb-a34f-cc96716c834f",
+    "title": "Martech Product Manager",
+    "active": true,
+    "date_updated": 1771456662,
+    "date_posted": 1771456662,
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210713064",
+    "locations": [
+      "London, UK"
+    ],
+    "company_url": "https://simplify.jobs/c/JP-Morgan-Chase",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": [
+      "Bachelor's"
+    ]
+  },
+  {
+    "source": "Simplify",
+    "category": "Software",
+    "company_name": "Atria Group",
+    "id": "454b7531-1c3f-4d4c-a1c8-7fdefccc4258",
+    "title": "Entry Level ASP.NET programmer",
+    "active": true,
+    "date_updated": 1771485250,
+    "date_posted": 1771485250,
+    "url": "https://jobs.smartrecruiters.com/AtriaGroupLLC/72190211",
+    "locations": [
+      "Chicago, IL"
+    ],
+    "company_url": "https://simplify.jobs/c/Atria-Group",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": []
+  },
+  {
+    "source": "Simplify",
+    "category": "Quant",
+    "company_name": "Sainsbury's",
+    "id": "b3101469-bea4-42c1-b4d7-021c4582928d",
+    "title": "Trading Assistant",
+    "active": false,
+    "date_updated": 1771163507,
+    "date_posted": 1771163507,
+    "url": "https://hdhe.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/400049513",
+    "locations": [
+      "Tunbridge Wells, UK"
+    ],
+    "company_url": "https://simplify.jobs/c/Sainsburys",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": []
+  },
+  {
+    "source": "Simplify",
+    "category": "Quant",
+    "company_name": "Sainsbury's",
+    "id": "9a8d9e43-bea7-44b5-b55c-d94759cb9606",
+    "title": "Trading Assistant",
+    "active": false,
+    "date_updated": 1771163515,
+    "date_posted": 1771163515,
+    "url": "https://hdhe.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX/job/400049512",
+    "locations": [
+      "Tunbridge Wells, UK"
+    ],
+    "company_url": "https://simplify.jobs/c/Sainsburys",
+    "is_visible": true,
+    "sponsorship": "Other",
+    "degrees": []
+  }
+]

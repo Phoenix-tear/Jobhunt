@@ -1,0 +1,110 @@
+# Large employers whose career sites are not on Greenhouse / Lever / Ashby.
+# `python -m jobhunt detect-ats` visits each careers_url (robots.txt obeyed), records which platform it runs,
+# and the Workday ones are then ingested by `ingest --sources workday`. Edit freely: add a company with a
+# name and careers_url (the public landing page). To pin a platform by hand add
+#   adapter: workday
+#   params: {tenant: acme, dc: wd5, host: acme.wd5.myworkdayjobs.com, site: External, locale: en-US}
+companies:
+  - {name: "JPMorgan Chase", careers_url: "https://careers.jpmorgan.com"}
+  - {name: "Goldman Sachs", careers_url: "https://www.goldmansachs.com/careers"}
+  - {name: "Morgan Stanley", careers_url: "https://www.morganstanley.com/careers"}
+  - {name: "Barclays", careers_url: "https://search.jobs.barclays"}
+  - {name: "Citi", careers_url: "https://jobs.citi.com"}
+  - {name: "Bank of America", careers_url: "https://careers.bankofamerica.com"}
+  - {name: "Wells Fargo", careers_url: "https://www.wellsfargojobs.com"}
+  - {name: "HSBC", careers_url: "https://www.hsbc.com/careers"}
+  - {name: "Deutsche Bank", careers_url: "https://careers.db.com"}
+  - {name: "UBS", careers_url: "https://www.ubs.com/global/en/careers.html"}
+  - {name: "BNP Paribas", careers_url: "https://group.bnpparibas/en/careers"}
+  - {name: "Standard Chartered", careers_url: "https://www.sc.com/en/careers"}
+  - {name: "Nomura", careers_url: "https://www.nomuracareers.com"}
+  - {name: "Macquarie", careers_url: "https://www.macquarie.com/careers"}
+  - {name: "Capital One", careers_url: "https://www.capitalonecareers.com"}
+  - {name: "American Express", careers_url: "https://www.americanexpress.com/en-us/careers"}
+  - {name: "Mastercard", careers_url: "https://careers.mastercard.com"}
+  - {name: "Visa", careers_url: "https://corporate.visa.com/en/jobs"}
+  - {name: "PayPal", careers_url: "https://paypal.eightfold.ai/careers"}
+  - {name: "Fidelity", careers_url: "https://jobs.fidelity.com"}
+  - {name: "BlackRock", careers_url: "https://careers.blackrock.com"}
+  - {name: "State Street", careers_url: "https://www.statestreet.com/careers"}
+  - {name: "Amazon", careers_url: "https://www.amazon.jobs"}
+  - {name: "Microsoft", careers_url: "https://careers.microsoft.com"}
+  - {name: "Google", careers_url: "https://www.google.com/about/careers/applications"}
+  - {name: "Apple", careers_url: "https://jobs.apple.com"}
+  - {name: "Oracle", careers_url: "https://careers.oracle.com", adapter: oracle, params: {host: eeho.fa.us2.oraclecloud.com, site: CX_45001}}
+  - {name: "SAP", careers_url: "https://jobs.sap.com"}
+  - {name: "Salesforce", careers_url: "https://careers.salesforce.com"}
+  - {name: "Adobe", careers_url: "https://careers.adobe.com"}
+  - {name: "NVIDIA", careers_url: "https://www.nvidia.com/en-us/about-nvidia/careers"}
+  - {name: "Intel", careers_url: "https://jobs.intel.com"}
+  - {name: "AMD", careers_url: "https://careers.amd.com"}
+  - {name: "Qualcomm", careers_url: "https://www.qualcomm.com/company/careers"}
+  - {name: "Cisco", careers_url: "https://jobs.cisco.com"}
+  - {name: "IBM", careers_url: "https://www.ibm.com/careers"}
+  - {name: "Dell", careers_url: "https://jobs.dell.com"}
+  - {name: "HP", careers_url: "https://jobs.hp.com", adapter: eightfold, params: {host: hp.eightfold.ai, domain: hp.com}}
+  - {name: "Broadcom", careers_url: "https://www.broadcom.com/company/careers"}
+  - {name: "Uber", careers_url: "https://www.uber.com/us/en/careers"}
+  - {name: "Walmart Global Tech", careers_url: "https://careers.walmart.com"}
+  - {name: "Target", careers_url: "https://corporate.target.com/careers"}
+  - {name: "Atlassian", careers_url: "https://www.atlassian.com/company/careers"}
+  - {name: "ServiceNow", careers_url: "https://careers.servicenow.com"}
+  - {name: "Workday", careers_url: "https://www.workday.com/en-us/company/careers"}
+  - {name: "Accenture", careers_url: "https://www.accenture.com/in-en/careers"}
+  - {name: "Deloitte", careers_url: "https://www.deloitte.com/in/en/careers.html"}
+  - {name: "PwC", careers_url: "https://www.pwc.in/careers.html"}
+  - {name: "EY", careers_url: "https://www.ey.com/en_in/careers"}
+  - {name: "KPMG", careers_url: "https://kpmg.com/in/en/home/careers.html"}
+  - {name: "Capgemini", careers_url: "https://www.capgemini.com/careers"}
+  - {name: "Cognizant", careers_url: "https://careers.cognizant.com"}
+  - {name: "TCS", careers_url: "https://www.tcs.com/careers"}
+  - {name: "Infosys", careers_url: "https://www.infosys.com/careers"}
+  - {name: "Wipro", careers_url: "https://careers.wipro.com"}
+  - {name: "HCLTech", careers_url: "https://www.hcltech.com/careers"}
+  - {name: "Tech Mahindra", careers_url: "https://careers.techmahindra.com"}
+  - {name: "Siemens", careers_url: "https://jobs.siemens.com"}
+  - {name: "Bosch", careers_url: "https://www.bosch.com/careers"}
+  - {name: "Honeywell", careers_url: "https://careers.honeywell.com"}
+  - {name: "Schneider Electric", careers_url: "https://www.se.com/ww/en/about-us/careers"}
+  - {name: "GE", careers_url: "https://www.ge.com/careers"}
+  - {name: "Philips", careers_url: "https://www.careers.philips.com"}
+  - {name: "Shell", careers_url: "https://www.shell.com/careers"}
+  - {name: "Meta", careers_url: "https://www.metacareers.com"}
+  - {name: "Texas Instruments", careers_url: "https://careers.ti.com"}
+  - {name: "Samsung", careers_url: "https://www.samsung.com/in/about-us/careers/"}
+  - {name: "Flipkart", careers_url: "https://www.flipkartcareers.com"}
+  - {name: "Swiggy", careers_url: "https://careers.swiggy.com"}
+  - {name: "Zomato", careers_url: "https://www.zomato.com/careers"}
+  - {name: "PhonePe", careers_url: "https://www.phonepe.com/careers/"}
+  - {name: "Razorpay", careers_url: "https://razorpay.com/jobs/"}
+  - {name: "CRED", careers_url: "https://careers.cred.club"}
+  - {name: "Meesho", careers_url: "https://www.meesho.io/jobs"}
+  - {name: "Paytm", careers_url: "https://paytm.com/careers"}
+  - {name: "Freshworks", careers_url: "https://careers.freshworks.com"}
+  - {name: "Zoho", careers_url: "https://www.zoho.com/careers/"}
+  - {name: "Ola", careers_url: "https://www.olacabs.com/careers"}
+  - {name: "Dream11", careers_url: "https://www.dreamsports.group/careers"}
+  - {name: "Groww", careers_url: "https://groww.in/careers"}
+  - {name: "Zerodha", careers_url: "https://zerodha.com/careers/"}
+  - {name: "Postman", careers_url: "https://www.postman.com/company/careers/"}
+  - {name: "BrowserStack", careers_url: "https://www.browserstack.com/careers"}
+  - {name: "ThoughtWorks", careers_url: "https://www.thoughtworks.com/careers"}
+  - {name: "Mu Sigma", careers_url: "https://www.mu-sigma.com/careers"}
+  - {name: "Fractal", careers_url: "https://fractal.ai/careers/"}
+  - {name: "LTIMindtree", careers_url: "https://www.ltimindtree.com/careers/"}
+  - {name: "Mphasis", careers_url: "https://careers.mphasis.com"}
+  - {name: "Persistent", careers_url: "https://www.persistent.com/careers/"}
+  - {name: "Zensar", careers_url: "https://www.zensar.com/careers"}
+  - {name: "Hexaware", careers_url: "https://hexaware.com/careers/"}
+  - {name: "Coforge", careers_url: "https://careers.coforge.com"}
+  - {name: "Intuit", careers_url: "https://jobs.intuit.com"}
+  - {name: "Databricks", careers_url: "https://www.databricks.com/company/careers"}
+  - {name: "Snowflake", careers_url: "https://careers.snowflake.com"}
+  - {name: "Stripe", careers_url: "https://stripe.com/jobs"}
+  - {name: "Cloudflare", careers_url: "https://www.cloudflare.com/careers/"}
+  - {name: "Datadog", careers_url: "https://careers.datadoghq.com"}
+  - {name: "MongoDB", careers_url: "https://www.mongodb.com/company/careers"}
+  - {name: "Elastic", careers_url: "https://www.elastic.co/about/careers/"}
+  - {name: "GitLab", careers_url: "https://about.gitlab.com/jobs/"}
+  - {name: "Twilio", careers_url: "https://www.twilio.com/en-us/company/jobs"}
+  - {name: "Okta", careers_url: "https://www.okta.com/company/careers/"}

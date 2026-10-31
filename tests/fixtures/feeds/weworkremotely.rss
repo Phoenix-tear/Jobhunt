@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss">
+  <channel>
+    <title>We Work Remotely: Remote jobs in design, programming, marketing and more</title>
+    <link>https://weworkremotely.com/categories/remote-programming-jobs.rss</link>
+    <description>We Work Remotely: Remote jobs in design, programming, marketing and more</description>
+    <language>en-US</language>
+    <ttl>60</ttl>
+    <item>
+      <title>ZoomInfo Technologies LLC: Director, Applied AI</title>
+      <region>Anywhere in the World</region>
+      <category>Full-Stack Programming</category>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Bethesda, Maryland, United States; Remote-US-MA; Remote-US-MD; Remote-US-WA; Vancouver, Washington, United States; Waltham, Massachusetts, United States
+&lt;/p&gt;
+
+&lt;div class="content-intro"&gt;&lt;p&gt;ZoomInfo is where careers accelerate. We move fast, think boldly, and empower you to do the best work of your life. You’ll be surrounded by teammates who care deeply, challenge each other, and celebrate wins. With tools that amplify your impact and a culture that backs your ambition, you won’t just contribute. You’ll make things happen–fast.&lt;/p&gt;&lt;/div&gt;&lt;div&gt;
+&lt;p class="markdown-p"&gt;You'll lead the team that builds the intelligence every ZoomInfo AI agent reasons over — what's true about companies and the people in them, how they relate, and what they're buying. This role owns the B2B data graph strategy end to end, blending classical machine learning and data science with LLM and agentic systems, and treating evaluation and inference cost as core disciplines. You'll set the technical bar for a team of senior engineers while staying close to the code, shipping alongside the people you lead.&lt;/p&gt;
+&lt;p class="markdown-p"&gt;&lt;strong class="markdown-strong"&gt;What You'll Do&lt;/strong&gt;&lt;/p&gt;
+&lt;ul class="markdown-ul"&gt;
+&lt;li class="markdown-li"&gt;You will ship code alongside your team, prototype alone to prove or kill an idea, and review code as a peer, setting how the team uses agentic coding tools with precise specifications and rigorous review.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You will own delivery end-to-end, from problem framing through serving and on-call, including long-tail graph coverage and user memory for agents that separates user-supplied context from system-of-record data.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You will choose the right method for each problem — classical machine learning, language models, or code — for challenges like sparse-company revenue estimation, entity resolution, and semantic intent modeling, deciding on measured evidence and stopping work that won't pay off.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You will define what it takes to claim an agent's output is correct, not just that its run completed, building the evaluation datasets, regression gates, and experiment designs that back those claims.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You will own inference cost, latency, and capacity, including build-versus-buy and distillation decisions, since a model too expensive to run everywhere isn't a result.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You will hire and grow machine learning engineers, data scientists, and research engineers, developing senior engineers into technical leaders.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You will work across product, platform, security, and legal, and present results and their limits to executives, including when a system isn't good enough to launch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="markdown-p"&gt;&lt;strong class="markdown-strong"&gt;What You Bring&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="markdown-p"&gt;&lt;em class="markdown-em"&gt;Must-Have:&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="markdown-ul"&gt;
+&lt;li class="markdown-li"&gt;You have significant experience building production machine learning systems and leading the engineers who build them by shipping alongside them — demonstrated capability matters more than years.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You have a track record of hiring and developing senior machine learning engineers and data scientists against a high bar.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You stay hands-on today: shipping code, building prototypes independently, and using agentic coding tools daily with rigorous review.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You bring deep classical machine learning and data science expertise (supervised learning, feature engineering, statistical inference and experiment design, strong SQL) alongside production LLM and agentic systems, with the judgment to choose between them, including setting an evaluation bar with leakage-safe validation, calibration, and validated LLM judges.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You have a record of cost and capacity decisions for model serving, such as moving a workload from a hosted model to a distilled or self-hosted one, with the savings measured, and you report results to executives with their limits stated, including recommending against a launch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="markdown-p"&gt;&lt;em class="markdown-em"&gt;Preferred:&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="markdown-ul"&gt;
+&lt;li class="markdown-li"&gt;You bring entrepreneurial experience — founding a company, or taking a product from inception to paying customers as a founding or early engineer.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You have experience in propensity modeling, ranking and retrieval, clustering, or entity resolution at scale.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You have worked on web-scale language processing over multilingual, noisy text, knowledge graphs, or user memory for agents.&lt;/li&gt;
+&lt;li class="markdown-li"&gt;You have experience with post-training and distillation, open-weight model serving, or AI governance and safety practices (ISO/IEC 42001, NIST AI RMF).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="markdown-p"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p class="markdown-p"&gt;#LI-hybrid&lt;/p&gt;
+&lt;p class="markdown-p"&gt;#LI-VC1&lt;/p&gt;
+&lt;/div&gt;&lt;div class="content-pay-transparency"&gt;&lt;div class="pay-input"&gt;&lt;div class="description"&gt;&lt;p&gt;Actual compensation offered will be based on factors such as the candidate’s work location, qualifications, skills, experience and/or training. Your recruiter can share more information about the specific salary range for your desired work location during the hiring process. We want our employees and their families to thrive.&lt;/p&gt;
+&lt;p&gt;In addition to comprehensive benefits we offer holistic mind, body and lifestyle programs designed for overall well-being. Learn more about ZoomInfo benefits &lt;a class="c-link" href="https://www.zoominfo.com/careers#benefits"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;div class="title"&gt;Below is the US base salary for this position. Additional compensation such as Bonus, Commission, Equity and other benefits may also apply.&lt;/div&gt;&lt;div class="pay-range"&gt;&lt;span&gt;$233,100&lt;/span&gt;&lt;span class="divider"&gt;—&lt;/span&gt;&lt;span&gt;$366,300 USD&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="content-conclusion"&gt;&lt;p&gt;&lt;strong&gt;About us:&lt;/strong&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;ZoomInfo (NASDAQ: GTM) is the Go-To-Market Intelligence Platform that empowers businesses to grow faster with AI-ready insights, trusted data, and advanced automation. Its solutions provide more than 35,000 companies worldwide with a complete view of their customers, making every seller their best seller.&lt;/p&gt;
+&lt;p&gt;ZoomInfo is committed to protecting your privacy when you apply for jobs with us. Please review our Job Applicant &lt;a href="https://drive.google.com/file/d/1yiG-k0YX_sW10PiJk_xliDc3W-veJCrK/view?usp=drive_link"&gt;Privacy Notice&lt;/a&gt; for more details on how we handle your personal information.&lt;/p&gt;
+&lt;p&gt;ZoomInfo may use a software-based assessment as part of the recruitment process. More information about this tool, including the results of the most recent bias audit, is available &lt;a href="https://www.zoominfo.com/legal/nyc-local-law-144-notice"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;ZoomInfo is proud to be an equal opportunity employer, hiring based on qualifications, merit, and business needs, and does not discriminate based on protected status. We welcome all applicants and are committed to providing equal employment opportunities regardless of sex, race, age, color, national origin, sexual orientation, gender identity, marital status, disability status, religion, protected military or veteran status, medical condition, or any other characteristic protected by applicable law. We also consider qualified candidates with criminal histories in accordance with legal requirements.&lt;/p&gt;
+&lt;p&gt;For Massachusetts Applicants: It is unlawful in Massachusetts to require or administer a lie detector test as a condition of employment or continued employment. An employer who violates this law shall be subject to criminal penalties and civil liability. ZoomInfo does not administer lie detector tests to applicants in any location.&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/zoominfo-technologies-llc-director-applied-ai"&gt;https://weworkremotely.com/remote-jobs/zoominfo-technologies-llc-director-applied-ai&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Tue, 29 Sep 2026 07:30:41 +0000</pubDate>
+      <guid>https://weworkremotely.com/remote-jobs/zoominfo-technologies-llc-director-applied-ai</guid>
+      <link>https://weworkremotely.com/remote-jobs/zoominfo-technologies-llc-director-applied-ai</link>
+    </item><item>
+      <title>Postscript: Client Strategist</title>
+      <region>Anywhere in the World</region>
+      <category>Full-Stack Programming</category>
+      <description>
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Remote, USA
+&lt;/p&gt;
+
+&lt;div class="content-intro"&gt;&lt;p&gt;Postscript is the AI messaging platform trusted by 20,000+ Shopify brands — including Brooklinen, Ruggable, True Classic, and Dr. Squatch.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;With a mission to make SMS your number one revenue driving channel, we built the best-in-class SMS marketing platform and launched revenue-driving AI features not available on any other platform. And we're just getting started.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Backed by Greylock and Y Combinator, fully remote since 2018.&lt;/p&gt;&lt;/div&gt;&lt;p&gt;As a &lt;strong&gt;Client Strategist&lt;/strong&gt;, you will be working with our biggest brands and be responsible for the end to end SMS strategy for a rotating group of customers. You will work closely with our Marketing, Product and Customer Success teams to learn best practices and use your marketing skills to drive consistent SMS revenue for select customers. You will write best in class copy on behalf of our customers to make brands stand out, and help brainstorm revenue-generating and best-in-class strategies directly with merchants to help them make SMS their #1-revenue-driving channel.&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;This is a fully remote position.&lt;/strong&gt;&lt;/h4&gt;
+&lt;h2&gt;&lt;strong&gt;Primary duties&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Excellent content&lt;/strong&gt; - Create compelling, innovative content for your customers in the form of SMS campaigns, automations and call to actions. Be consistent with their brand voice and vision while continually helping them improve their SMS programs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Excellent advisory relationships&lt;/strong&gt; - Develop excellent advisory relationships with customers. Execute on best practices, strategize on new marketing strategies, and develop and run innovative, creative SMS marketing campaigns.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer growth&lt;/strong&gt; - Actively track, analyze and iterate on customers’ results. Ensure they scale quickly and effectively on the Postscript platform.&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Marketing best practices&lt;/strong&gt; - Establish marketing best practices to ensure brands are on the leading front of SMS Marketing. Continually expand your expert-level knowledge of your customer’s marketing, technology and general business needs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Industry and product expertise&lt;/strong&gt; - continually maintain expert-level knowledge in our product, services, and of the ecommerce marketing domain. Be a go-to consultant for both internal and external stakeholders.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong&gt;What We’ll Love About You&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;3+ years proven experience in the direct-to-consumer space with strong knowledge of SMS, copywriting and best practices. Hands on experience with A/B testing and persuasive copywriting&amp;nbsp;&lt;/li&gt;
+&lt;li&gt;Demonstrated experience in e-commerce and e-commerce marketing&lt;/li&gt;
+&lt;li&gt;Passion for helping customers understand and execute ecommerce SMS strategy&lt;/li&gt;
+&lt;li&gt;Experience in a customer-facing role managing operator relationships and liaising with decision-makers and senior stakeholders when required&lt;/li&gt;
+&lt;li&gt;Skilled in streamlining workflows and managing complex processes&lt;/li&gt;
+&lt;li&gt;Proven ability to multitask in a fast-paced environment, ensuring all deadlines are met&lt;/li&gt;
+&lt;li&gt;Strong analytical skills, with a data-driven, metrics-oriented mindset&lt;/li&gt;
+&lt;li&gt;Exceptional communicator, both verbal and written&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;strong&gt;What You’ll Love About Us&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Salary range of USD $69,000-$83,000 &lt;/strong&gt;&lt;strong&gt;base plus variable compensation &amp;amp; significant equity (we do not have geo based salaries)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;High growth startup - plenty of room for you to directly impact the company and grow your career!&lt;/li&gt;
+&lt;li&gt;Work from home (or wherever)&lt;/li&gt;
+&lt;li&gt;Fun - We’re passionate and enjoy what we do&lt;/li&gt;
+&lt;li&gt;Competitive compensation and opportunity for equity&lt;/li&gt;
+&lt;li&gt;Flexible paid time off&lt;/li&gt;
+&lt;li&gt;Health, dental, vision insurance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;div class="content-conclusion"&gt;&lt;p&gt;&lt;em&gt;For information about how we use your personal data, please see our U.S. Job Applicant&amp;nbsp;&lt;a class="c-link" href="https://postscript.io/job-applicant-privacy-notice"&gt;Privacy Notice&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;You are welcome here. Postscript is an ever-evolving place of equal employment for talented individuals.&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/postscript-client-strategist"&gt;https://weworkremotely.com/remote-jobs/postscript-client-strategist&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Tue, 29 Sep 2026 07:30:41 +0000</pubDate>
+      <guid>https://weworkremotely.com/remote-jobs/postscript-client-strategist</guid>
+      <link>https://weworkremotely.com/remote-jobs/postscript-client-strategist</link>
+    </item><item>
+      <media:content url="https://wwr-pro.s3.amazonaws.com/logos/0171/6471/logo.gif" type="image/png"/>
+      <title>Air Apps: Framer Website Designer</title>
+      <region>Helsinki</region>
+      <category>Front-End Programming</category>
+      <description>&lt;img src="https://we-work-remotely.imgix.net/logos/0171/6471/logo.gif?ixlib=rails-4.0.0&amp;w=50&amp;h=50&amp;dpr=2&amp;fit=fill&amp;auto=compress" /&gt;
+
+&lt;p&gt;
+  &lt;strong&gt;Headquarters:&lt;/strong&gt; Helsinki
+    &lt;br /&gt;&lt;strong&gt;URL:&lt;/strong&gt; &lt;a href="http://airapps.com"&gt;http://airapps.com&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;h2&gt;&lt;strong&gt;Framer Website Designer (Onsite – Presidio, San Francisco)&lt;/strong&gt;&lt;/h2&gt;&lt;h3&gt;&lt;strong&gt;About Air Apps&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;At Air Apps, we believe in thinking bigger and moving faster. We’re a family-founded company on a mission to create the world’s first AI-powered Personal &amp;amp; Entrepreneurial Resource Planner (PRP), and we need your passion and ambition to help us change how people plan, work, and live. Born in Lisbon, Portugal in 2018 and now with offices in both Lisbon and San Francisco, we’ve remained self-funded while reaching over 100 million downloads worldwide.&lt;/p&gt;&lt;p&gt;Our long-term focus drives us to challenge the status quo every day, pushing the boundaries of AI-driven solutions that truly make a difference. Here, you’ll be a creative force, shaping products that empower people across the globe.&lt;/p&gt;&lt;p&gt;Join us on this journey to redefine resource management and change lives along the way.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;This is a &lt;strong&gt;fully onsite position&lt;/strong&gt;, based at our office in Lisbon, where you will collaborate closely with cross-functional teams in person and contribute to a dynamic and fast-paced environment. &lt;strong&gt;We are open to support with relocation efforts.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;strong&gt;The Role&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;As a &lt;strong&gt;Framer Website Designer&lt;/strong&gt;, you’ll take ownership of designing and building high-performing, visually compelling websites using &lt;strong&gt;Framer&lt;/strong&gt;. You’ll collaborate closely with our marketing, product, and engineering teams to create seamless web experiences that reflect our brand vision while meeting business and performance goals.&lt;/p&gt;&lt;p&gt;You’ll also work directly with &lt;strong&gt;SEO professionals&lt;/strong&gt;, your closest collaborators, to ensure all pages are optimized for discoverability, loading speed, and accessibility. From landing pages to product microsites, your designs will directly influence how millions of users engage with Air Apps online.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;Responsibilities&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Design and build responsive, accessible, and engaging websites and landing pages using &lt;strong&gt;Framer&lt;/strong&gt;.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Partner with SEO experts to ensure designs meet performance, accessibility, and search engine optimization standards.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Collaborate with cross-functional stakeholders from brand, marketing, and product to align on business goals and messaging.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Develop modular components and templates for scalable site structures.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Maintain and evolve the visual identity of our web presence in line with Air Apps’ brand guidelines.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Monitor site analytics and user behavior to inform iterative improvements and A/B testing.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Stay up to date with web design trends, Framer updates, and best practices in site performance.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;&lt;strong&gt;Requirements&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Around 3–5+ years of experience designing and building websites with a strong emphasis on visual storytelling and UX.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Deep proficiency in &lt;strong&gt;Framer&lt;/strong&gt;, with a strong portfolio of responsive web experiences or live projects.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Solid understanding of web design principles including layout, hierarchy, typography, and mobile-first design.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Familiarity with web performance best practices, SEO fundamentals, and accessibility standards (WCAG).&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Ability to work collaboratively with SEO and marketing teams to align design with search and content strategies.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Experience maintaining or contributing to a design system.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Strong visual communication and prototyping skills.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Excellent attention to detail, organization, and problem-solving.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;em&gt;Bonus points for:&lt;/em&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;Experience working on marketing sites for SaaS, tech, or AI-driven products.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;Familiarity with HTML/CSS or understanding of how websites are developed under the hood.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;What benefits do we offer?&lt;/strong&gt;&lt;/h3&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Apple hardware&lt;/strong&gt; ecosystem for work.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Annual Bonus&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Top-tier Health and Life Insurance&lt;/strong&gt; for peace of mind.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Transportation Budget&lt;/strong&gt; to support your commute needs.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Coverflex&lt;/strong&gt; benefits package for meal allowances, well-being, and more.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Childcare&lt;/strong&gt; support.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Air Conference&lt;/strong&gt; - an opportunity to meet the team, collaborate, and grow together.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Pension Fund&lt;/strong&gt; to support your long-term financial planning.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Urban Sports Club&lt;/strong&gt; membership to keep you active.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;Meals 100% free&lt;/strong&gt; at the hub.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;h1&gt;&lt;strong&gt;Diversity &amp;amp; Inclusion&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;At Air Apps, we are committed to fostering a diverse, inclusive, and equitable workplace. We enthusiastically welcome applicants from all backgrounds, experiences, and perspectives. We celebrate diversity in all its forms and believe that varied voices and experiences make us stronger.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;h1&gt;&lt;strong&gt;Application Disclaimer&lt;/strong&gt;&lt;/h1&gt;&lt;p&gt;At Air Apps, we value transparency and integrity in our hiring process. Applicants must submit their own work without any AI-generated assistance. Any use of AI in application materials, assessments, or interviews will result in disqualification.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To apply:&lt;/strong&gt; &lt;a href="https://weworkremotely.com/remote-jobs/air-apps-framer-website-designer-1"&gt;https://weworkremotely.com/remote-jobs/air-apps-framer-website-designer-1&lt;/a&gt;&lt;/p&gt;
+</description>
+      <pubDate>Mon, 28 Sep 2026 22:12:46 +0000</pubDate>
+      <guid>https://weworkremotely.com/remote-jobs/air-apps-framer-website-designer-1</guid>
+      <link>https://weworkremotely.com/remote-jobs/air-apps-framer-website-designer-1</link>
+    </item>
+</channel>
+</rss>

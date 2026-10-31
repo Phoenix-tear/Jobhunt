@@ -1,0 +1,19 @@
+# Hand-picked boards to seed discovery (verified by `jobhunt discover`, then ingested).
+# Format: ats is one of greenhouse | lever | ashby | workable | smartrecruiters | recruitee
+# `slug` is the board name in the careers URL, e.g. boards.greenhouse.io/<slug>.
+# Optional: name (display name), region (lever only: us | eu).
+companies:
+  - {ats: greenhouse, slug: stripe,       name: Stripe}
+  - {ats: greenhouse, slug: airbnb,       name: Airbnb}
+  - {ats: greenhouse, slug: cloudflare,   name: Cloudflare}
+  - {ats: greenhouse, slug: databricks,   name: Databricks}
+  - {ats: lever,      slug: palantir,     name: Palantir}
+  - {ats: lever,      slug: spotify,      name: Spotify}
+  - {ats: lever,      slug: leverdemo,    name: Lever Demo}
+  - {ats: ashby,      slug: ashby,        name: Ashby}
+  - {ats: ashby,      slug: openai,       name: OpenAI}
+  - {ats: ashby,      slug: notion,       name: Notion}
+  - {ats: workable,   slug: huggingface,  name: Hugging Face}
+  - {ats: smartrecruiters, slug: BoschGroup, name: Bosch Group}
+  - {ats: smartrecruiters, slug: ServiceNow, name: ServiceNow}
+  - {ats: recruitee,  slug: bunq,         name: bunq}

@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\definecolor{mediumgray}{RGB}{100,100,100}
+\newcommand{\experienceitem}[4]{\textbf{#1} #2 #3 #4}
+\newcommand{\projectitem}[4]{\textbf{#1} #2 #3 #4}
+\begin{document}
+\begin{center}
+{\Large \textbf{DEVON SMITH}}\\
+{\normalsize \textcolor{mediumgray}{COMPUTER SCIENCE UNDERGRADUATE}}\\
+\href{mailto:devon@example.test}{devon@example.test} \,|\, +1 555 0100
+\end{center}
+\section{Summary}
+Computer science student specializing in distributed systems and backend infrastructure.
+\section{Education}
+\noindent\textbf{Northern State University} \hfill \textit{Expected May 2026}\\
+\textit{B.S. Computer Science} \hfill \textit{GPA: 3.85}
+\section{Professional Experience}
+\experienceitem{Software Engineering Intern, CloudScale Corp}{Jun 2025 - Aug 2025}{}{
+\begin{itemize}[leftmargin=12pt]
+  \item Implemented distributed caching using Redis clusters decreasing latency by 32\%.
+  \item Refactored message queue consumers in Go to handle 10,000 events per second.
+  \item Authored automated integration tests with 95\% code coverage in CI pipelines.
+\end{itemize}}
+\section{Projects}
+\projectitem{StreamPulse}{Go, Kafka, PostgreSQL}{Jan 2025 - May 2025}{
+\begin{itemize}[leftmargin=12pt]
+  \item Built a real-time event processing engine indexing financial telemetry streams.
+  \item Optimized database write throughput by 40\% using batch insertion techniques.
+\end{itemize}}
+\projectitem{SecureTunnel}{Rust, WebSockets}{Sep 2024 - Dec 2024}{
+\begin{itemize}[leftmargin=12pt]
+  \item Developed an encrypted peer-to-peer proxy with TLS 1.3 protocol handshake.
+  \item Packaged service into non-root Alpine Docker containers with automated health checks.
+\end{itemize}}
+\section{Skills}
+\noindent\textbf{Languages:} Go, Rust, Python, SQL\\
+\textbf{Infrastructure:} Docker, Kubernetes, Redis, PostgreSQL, Kafka, Linux
+\section{Additional Information}
+\noindent\textbf{Certifications:} Certified Kubernetes Application Developer (CKAD)
+\end{document}

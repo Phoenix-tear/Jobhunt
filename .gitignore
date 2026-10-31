@@ -1,0 +1,61 @@
+# secrets - never commit
+.env
+.secrets/
+
+# local data
+data/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+
+# python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# website (phase 5)
+node_modules/
+web/dist/
+*.tsbuildinfo
+config.copy.yaml
+
+config.local.yaml
+tools/
+
+# --- added for publishing ---
+.secrets/
+*.sqlite3-journal
+*.db
+*.joblib
+*.gguf
+*.log
+logs/
+tools/tectonic/
+web/node_modules/
+web/dist/
+.venv*/
+*.pdf
+config.local.yaml
+.env.*
+!.env.example
+!config.local.example.yaml
+!data/profile/profile.example.yaml
+
+# scratch / personal one-off scripts (resume-specific narrative reports)
+scripts/scratch_*.py
+scripts/tailoring_report.py
+scripts/tailor_v2_report.py
+doctor_report.txt
+scripts/tailor_v2_run.py
+
+# misc junk
+scratch/
+*.bak
+*.orig
+tmp*/
+nul
+.coverage
+htmlcov/

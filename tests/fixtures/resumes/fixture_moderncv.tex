@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+\firstname{Morgan}
+\familyname{Lee}
+\title{DevOps \& Cloud Infrastructure Engineer}
+\email{morgan@example.test}
+\phone[mobile]{+1~(555)~0133}
+
+\begin{document}
+
+\section{Summary}
+Cloud infrastructure engineer focused on Kubernetes automation, Terraform IaC, and reliable CI/CD pipelines.
+
+\section{Education}
+\cventry{2022--2026}{B.S. Computer Engineering}{Purdue University}{West Lafayette, IN}{\textit{GPA 3.78}}{Dean's List 4 semesters}
+
+\section{Experience}
+\cventry{May 2025--Aug 2025}{Cloud Platform Intern}{Skyline Cloud Services}{Chicago, IL}{}{
+\begin{itemize}
+  \item Automated multi-region AWS infrastructure provisioning using Terraform modules and state locking.
+  \item Deployed ArgoCD GitOps controllers reducing manual production release time by 80\%.
+  \item Hardened Kubernetes RBAC policies and network isolation rules complying with SOC 2 standards.
+\end{itemize}
+}
+
+\section{Projects}
+\cventry{Jan 2025--Apr 2025}{KubeWatch}{Kubernetes, Go, Helm}{}{}{
+\begin{itemize}
+  \item Created a lightweight cluster watcher dispatching Slack alerts on pod crash-loop backoffs.
+  \item Published Helm charts with automated semantic versioning and artifact verification.
+\end{itemize}
+}
+
+\cventry{Sep 2024--Dec 2024}{LogShipper}{Rust, AWS S3, Vector}{}{}{
+\begin{itemize}
+  \item Built a high-throughput syslog forwarder compressing and shipping telemetry to S3 glacier vaults.
+  \item Achieved sub-5ms memory footprint running as a daemonset across 50 nodes.
+\end{itemize}
+}
+
+\section{Skills}
+\cvitem{Cloud \& Orchestration}{AWS, GCP, Kubernetes, Docker, Helm, Terraform}
+\cvitem{Languages}{Go, Python, Bash, Rust, SQL}
+\cvitem{Monitoring \& CI/CD}{Prometheus, Grafana, GitHub Actions, ArgoCD, Linux}
+
+\end{document}

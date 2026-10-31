@@ -1,0 +1,15 @@
+# Synthetic company rules used by tests so they never depend on the git-ignored data/profile/company_rules.yaml.
+- company: Barclays
+  allow_level_codes: [BA4]
+  allow_title_patterns: [Analyst, Technology Developer]
+  deny_level_codes: [BA3, BA2, BA1]
+  deny_text_patterns:
+    - Assistant Vice President Expectations
+    - Vice President Expectations
+  deny_title_patterns:
+    - Assistant Vice President
+    - Vice President
+    - AVP
+    - VP
+    - Director
+  note: "grade markers in the job text decide the level"
